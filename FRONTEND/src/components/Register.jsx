@@ -45,7 +45,6 @@ const Register = ({ formInput, handleInput }) => {
             disabled={
               !registerUsername || !registerPassword || !registerResetPassword
             }
-            onClick={() => alert("hello")}
           >
             Register
           </button>

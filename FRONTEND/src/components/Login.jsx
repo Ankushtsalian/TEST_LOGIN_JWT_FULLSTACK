@@ -29,7 +29,6 @@ const Login = ({ handleInput, formInput }) => {
             className="control"
             type="button"
             disabled={!loginUsername || !loginPassword}
-            onClick={() => alert("hello")}
           >
             LOGIN
           </button>
