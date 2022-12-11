@@ -1,37 +1,36 @@
+.login-card ,.register-card {
+    width: 400px;
+    padding: 50px 30px;
+    border-radius: 1.25rem;
+    background: #ffffff;
+    text-align: center;
+}
 
-.login-card {
-    width: 400px;
-    padding: 100px 30px 64px;
-    border-radius: 1.25rem;
-    background: #ffffff;
-    text-align: center;
-  }
-  
-  .login-card > h2 {
+.login-card>h2,.register-card>h2  {
     font-size: 36px;
     font-weight: 600;
     margin: 0 0 6px;
-  }
-  
-  .login-card > h3 {
+}
+
+.login-card>h3,.register-card>h3 {
     color: #837f90;
     margin: 0 0 40px;
     font-weight: 500;
     font-size: 1rem;
-  }
-  
-  .login-form {
+}
+
+.login-form,.register-form {
     width: 100%;
     margin: 0;
     display: grid;
     gap: 16px;
-  }
-  
-  .login-form input.control::placeholder {
+}
+
+.login-form input.control::placeholder ,.register-form input.control::placeholder{
     color: #aaa7bc;
-  }
-  
-  .login-form > button.control {
+}
+
+.login-form>button.control ,.register-form>button.control{
     cursor: pointer;
     width: 100%;
     height: 56px;
@@ -45,55 +44,25 @@
     text-align: center;
     letter-spacing: 2px;
     transition: all 0.375s;
-  }
-  
-  /* ----------------------------------------REGISTER-------------------------------------------------- */
-  
-.register-card {
-    width: 400px;
-    padding: 100px 30px 64px;
-    border-radius: 1.25rem;
-    background: #ffffff;
-    text-align: center;
-  }
-  
-  .register-card > h2 {
-    font-size: 36px;
-    font-weight: 600;
-    margin: 0 0 6px;
-  }
-  
-  .register-card > h3 {
-    color: #837f90;
-    margin: 0 0 40px;
-    font-weight: 500;
-    font-size: 1rem;
-  }
-  
-  .register-form {
+}
+
+/* ----------------------------------------Redirect-------------------------------------------------- */
+
+
+.Redirect ,.Redirect a{
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
     width: 100%;
-    margin: 0;
-    display: grid;
-    gap: 16px;
-  }
-  
-  .register-form input.control::placeholder {
-    color: #aaa7bc;
-  }
-  
-  .register-form > button.control {
-    cursor: pointer;
-    width: 100%;
-    height: 56px;
-    padding: 0 16px;
-    background: #703eff;
-    color: #f9f9f9;
-    border: 0;
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: center;
-    letter-spacing: 2px;
-    transition: all 0.375s;
-  }
-  
+    text-decoration: none; 
+    color: #6ac624;
+}
+.Redirect span{
+    margin-left: 10px ;
+}
+.Redirect{
+    font-weight: bold;
+    font-size: 20px;
+    margin: 50px 0 0;
+ 
+}
