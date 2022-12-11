@@ -14,8 +14,9 @@ const Register = () => {
             type="text"
             placeholder="Username"
           />
-          <Password password="true" />
-          <Password reset-password="true" />
+
+          <Password placeholder="Password" />
+          <Password placeholder="Reset-password" />
 
           <button className="control" type="button">
             Register
@@ -23,7 +24,7 @@ const Register = () => {
         </form>
       </div>
       <div className="Redirect">
-        <Link to="/">
+        <Link to="/login">
           &#x2190; <span>Login</span>
         </Link>
       </div>

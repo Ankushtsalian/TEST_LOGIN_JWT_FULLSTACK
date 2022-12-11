@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Password = ({ password }) => {
+const Password = ({ placeholder }) => {
   const [toggleButton, setToggleButton] = useState(false);
   const togglePassword = () => {
     setToggleButton(!toggleButton);
@@ -8,11 +8,11 @@ const Password = ({ password }) => {
   return (
     <div className="password">
       <input
+        autocomplete="off"
         spellCheck="false"
         className="control"
-        id="password"
         type={toggleButton ? "text" : "password"}
-        placeholder="Password"
+        placeholder={placeholder}
       />
       <button
         className={toggleButton ? "toggle" : "toggle showing"}

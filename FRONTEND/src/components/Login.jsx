@@ -15,15 +15,16 @@ const Login = () => {
             type="text"
             placeholder="Username"
           />
-          <Password password="true" />
+
+          <Password placeholder="Password" />
 
           <button className="control" type="button">
             LOGIN
           </button>
         </form>
-      </div>{" "}
+      </div>
       <div className="Redirect">
-        <Link to="/register">
+        <Link to="/">
           &#x2190; <span>Register</span>
         </Link>
       </div>
