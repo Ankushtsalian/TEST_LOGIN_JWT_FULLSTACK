@@ -2,18 +2,17 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Password from "./Password";
 
-const Register = ({ formInput, setFormInput, handleInput }) => {
+const Register = ({ formInput, handleInput }) => {
   const [dis, setDis] = useState(true);
-  const disable = () => {
-    setDis(!dis);
-  };
-
-  const { registerPassword, registerResetPassword } = formInput;
-  // const handleInput = (e) => {
-  //   const { name, value } = e.target;
-  //   console.log(e.target.value);
-  //   setFormInput((formValue) => ({ ...formValue, [name]: value }));
+  const { registerUsername, registerPassword, registerResetPassword } =
+    formInput;
+  // const andv = !registerUsername && !registerPassword && !registerResetPassword;
+  // const orv = !registerUsername || !registerPassword || !registerResetPassword;
+  // const disable = () => {
+  //   console.log("& : " + andv);
+  //   console.log("|| : " + orv);
   // };
+
   return (
     <div className="register-card">
       <div>
@@ -35,7 +34,7 @@ const Register = ({ formInput, setFormInput, handleInput }) => {
             handleInput={handleInput}
           />
           <Password
-            placeholder="Reset-password"
+            placeholder="Re-Enter-password"
             name="registerResetPassword"
             handleInput={handleInput}
           />
@@ -43,14 +42,16 @@ const Register = ({ formInput, setFormInput, handleInput }) => {
           <button
             className="control"
             type="button"
-            disabled={dis}
+            disabled={
+              !registerUsername || !registerPassword || !registerResetPassword
+            }
             onClick={() => alert("hello")}
           >
             Register
           </button>
-          <button className="control" type="button" onClick={disable}>
+          {/* <button className="control" type="button" onClick={disable}>
             Register1
-          </button>
+          </button> */}
         </form>
       </div>
       <div className="Redirect">

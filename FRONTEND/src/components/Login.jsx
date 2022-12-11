@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import Password from "./Password";
 import Register from "./Register";
 
-const Login = () => {
+const Login = ({ handleInput, formInput }) => {
+  const { loginUsername, loginPassword } = formInput;
   return (
     <div className="login-card">
       <div>
@@ -12,13 +13,24 @@ const Login = () => {
           <input
             spellCheck="false"
             className="control"
+            name="loginUsername"
             type="text"
             placeholder="Username"
+            onChange={handleInput}
           />
 
-          <Password placeholder="Password" />
+          <Password
+            placeholder="Password"
+            name="loginPassword"
+            handleInput={handleInput}
+          />
 
-          <button className="control" type="button">
+          <button
+            className="control"
+            type="button"
+            disabled={!loginUsername || !loginPassword}
+            onClick={() => alert("hello")}
+          >
             LOGIN
           </button>
         </form>

@@ -8,13 +8,15 @@ import { useState } from "react";
 
 function App() {
   const [formInput, setFormInput] = useState({
+    loginUsername: "",
+    loginPassword: "",
     registerUsername: "",
     registerPassword: "",
     registerResetPassword: "",
   });
 
   // const { registerPassword, registerResetPassword } = formInput;
-  console.log(formInput);
+  // console.log(formInput);
   const handleInput = (e) => {
     const { name, value } = e.target;
     setFormInput((formValue) => ({ ...formValue, [name]: value }));
