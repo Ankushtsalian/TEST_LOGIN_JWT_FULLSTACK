@@ -1,7 +1,19 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Password from "./Password";
 
-const Register = () => {
+const Register = ({ formInput, setFormInput, handleInput }) => {
+  const [dis, setDis] = useState(true);
+  const disable = () => {
+    setDis(!dis);
+  };
+
+  const { registerPassword, registerResetPassword } = formInput;
+  // const handleInput = (e) => {
+  //   const { name, value } = e.target;
+  //   console.log(e.target.value);
+  //   setFormInput((formValue) => ({ ...formValue, [name]: value }));
+  // };
   return (
     <div className="register-card">
       <div>
@@ -11,15 +23,33 @@ const Register = () => {
           <input
             spellCheck="false"
             className="control"
+            name="registerUsername"
             type="text"
             placeholder="Username"
+            onChange={handleInput}
           />
 
-          <Password placeholder="Password" />
-          <Password placeholder="Reset-password" />
+          <Password
+            placeholder="Password"
+            name="registerPassword"
+            handleInput={handleInput}
+          />
+          <Password
+            placeholder="Reset-password"
+            name="registerResetPassword"
+            handleInput={handleInput}
+          />
 
-          <button className="control" type="button">
+          <button
+            className="control"
+            type="button"
+            disabled={dis}
+            onClick={() => alert("hello")}
+          >
             Register
+          </button>
+          <button className="control" type="button" onClick={disable}>
+            Register1
           </button>
         </form>
       </div>

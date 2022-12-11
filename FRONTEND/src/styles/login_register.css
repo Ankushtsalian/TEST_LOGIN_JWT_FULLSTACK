@@ -30,7 +30,8 @@
 }
 
 .login-form input.control::placeholder ,.register-form input.control::placeholder{
-    color: #121213;
+    color: aliceblue;
+
 }
 
 .login-form>button.control ,.register-form>button.control{
