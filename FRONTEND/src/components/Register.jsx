@@ -6,12 +6,6 @@ const Register = ({ formInput, handleInput }) => {
   const [dis, setDis] = useState(true);
   const { registerUsername, registerPassword, registerResetPassword } =
     formInput;
-  // const andv = !registerUsername && !registerPassword && !registerResetPassword;
-  // const orv = !registerUsername || !registerPassword || !registerResetPassword;
-  // const disable = () => {
-  //   console.log("& : " + andv);
-  //   console.log("|| : " + orv);
-  // };
 
   return (
     <div className="register-card">
@@ -45,6 +39,7 @@ const Register = ({ formInput, handleInput }) => {
             disabled={
               !registerUsername || !registerPassword || !registerResetPassword
             }
+            onClick={handleRegister}
           >
             Register
           </button>
