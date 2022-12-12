@@ -41,7 +41,13 @@ function App() {
           />
           <Route
             path="/login"
-            element={<Login handleInput={handleInput} formInput={formInput} />}
+            element={
+              <Login
+                handleInput={handleInput}
+                formInput={formInput}
+                setFormInput={setFormInput}
+              />
+            }
           />
 
           <Route

@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Password from "./Password";
 
@@ -16,9 +15,11 @@ const Register = ({ formInput, handleInput }) => {
           password: registerPassword,
         }
       );
-      alert(response.data.msg.username);
+      alert(
+        `You have successfully registered as : ${response.data.msg.username}, Please try to login`
+      );
     } catch (error) {
-      alert(error.response.data.msg);
+      alert(error.response.data.msg + " Please try to Sign in");
     }
   };
 
@@ -58,14 +59,12 @@ const Register = ({ formInput, handleInput }) => {
           >
             Register
           </button>
-          {/* <button className="control" type="button" onClick={disable}>
-            Register1
-          </button> */}
         </form>
       </div>
       <div className="Redirect">
+        <div>Already have an account?</div>
         <Link to="/login">
-          &#x2190; <span>Login</span>
+          &#x2190; <span>Sign In</span>
         </Link>
       </div>
     </div>

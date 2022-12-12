@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Logout = () => {
   const token = localStorage.getItem("Token");
@@ -18,7 +18,7 @@ const Logout = () => {
     }
     return () => {
       console.log("LOGOUT");
-    };
+    }; // eslint-disable-next-line
   }, [logToken]);
 
   return (

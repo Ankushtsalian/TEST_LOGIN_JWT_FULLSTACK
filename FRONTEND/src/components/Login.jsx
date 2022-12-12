@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 
-import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Password from "./Password";
 import axios from "axios";
 
-const Login = ({ handleInput, formInput }) => {
+const Login = ({ handleInput, formInput, setFormInput }) => {
   const { loginUsername, loginPassword } = formInput;
   const [tokenLog, setTokenLog] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.removeItem("Token");
+  });
+
   const handleLogin = async () => {
     try {
       const response = await axios.post("http://localhost:5000/api/v1/login", {
@@ -16,6 +21,15 @@ const Login = ({ handleInput, formInput }) => {
       });
       // console.log(response.data.msg.decoded);
       setTokenLog(() => response.data.msg.token);
+      setFormInput((formValue) => ({
+        ...formValue,
+
+        loginUsername: "",
+        loginPassword: "",
+        registerUsername: "",
+        registerPassword: "",
+        registerResetPassword: "",
+      }));
       // if (token) navigate("/protected");
 
       alert(
@@ -32,16 +46,9 @@ const Login = ({ handleInput, formInput }) => {
     }
     return () => {
       console.log("LOGIN");
-    };
+    }; // eslint-disable-next-line
   }, [tokenLog]);
-  // useEffect(() => {
-  //   if (tokenLog) {
-  //     navigate("/protected");
-  //   }
-  //   return () => {
-  //     console.log("done");
-  //   };
-  // }, [tokenLog]);
+
   return (
     <div className="login-card">
       <div>
@@ -61,7 +68,7 @@ const Login = ({ handleInput, formInput }) => {
             name="loginPassword"
             handleInput={handleInput}
           />
-          {/* <Link to="/protected"> */}{" "}
+
           <button
             className="control"
             type="button"
@@ -70,12 +77,12 @@ const Login = ({ handleInput, formInput }) => {
           >
             LOGIN
           </button>
-          {/* </Link> */}
         </form>
       </div>
       <div className="Redirect">
+        <div>New User, Please Register</div>
         <Link to="/">
-          &#x2190; <span>Register</span>
+          &#x2190; <span>Create your account</span>
         </Link>
       </div>
     </div>

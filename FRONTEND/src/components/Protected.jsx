@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Protected = ({ children }) => {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const Protected = ({ children }) => {
     }
     return () => {
       console.log("Protected");
-    };
+    }; // eslint-disable-next-line
   }, [logToken]);
 
   return <div>{logToken && <div className="dashboard">{children}</div>}</div>;

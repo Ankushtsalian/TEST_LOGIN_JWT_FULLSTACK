@@ -55,21 +55,34 @@
 
 
 .Redirect ,.Redirect a{
-    display: flex;
-    justify-content: flex-start;
-    align-content: flex-start;
+    /* display: flex; */
+    /* justify-content: flex-start;
+    align-content: flex-start; */
     width: 100%;
     text-decoration: none; 
-    color: #6ac624;
+    color: #a5e815;
+    
+   
 }
-.Redirect span{
+
+.Redirect a{
+    background-image: url("../background.svg");
+    animation: rotate 3s infinite alternate linear;
+    margin-top: 50px;
+}
+.Redirect div{
+  
+    padding-bottom: 20px;
+}
+.Redirect a span{
     margin-left: 10px ;
+    margin-top: 50px;
 }
 .Redirect{
-    font-weight: bold;
+    /* font-weight: bold; */                
     font-size: 20px;
     margin: 50px 0 0;
- 
+
 }
 
 
