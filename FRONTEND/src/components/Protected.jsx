@@ -1,21 +1,16 @@
-import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Protected = ({ children }) => {
   const navigate = useNavigate();
-  const [logToken] = useState(localStorage.getItem("Token"));
 
-  useEffect(() => {
-    if (!logToken) {
-      alert("Unathorized USER");
-      navigate("/login");
-    }
-    return () => {
-      console.log("Protected");
-    }; // eslint-disable-next-line
-  }, [logToken]);
+  const token = localStorage.getItem("Token");
+  console.log("logToken : " + " " + token);
 
-  return <div>{logToken && <div className="dashboard">{children}</div>}</div>;
+  if (!token) {
+    return navigate("/login");
+  }
+
+  return <div className="container">{token && <>{children}</>}</div>;
 };
 
 export default Protected;

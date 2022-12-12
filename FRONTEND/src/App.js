@@ -3,10 +3,15 @@ import "../src/styles/login_register.css";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 import { useEffect, useState } from "react";
-import Logout from "./components/Logout";
 import Protected from "./components/Protected";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [formInput, setFormInput] = useState({
@@ -17,16 +22,16 @@ function App() {
     registerResetPassword: "",
   });
 
-  useEffect(() => {
-    localStorage.removeItem("Token");
-  }, []);
+  /**-------------------------------------------------------------------- */
 
+  /**-------------------------------------------------------------------- */
   const handleInput = (e) => {
     const { name, value } = e.target;
     setFormInput((formValue) => ({ ...formValue, [name]: value }));
   };
   return (
-    <main>
+    <>
+      {/* <main> */}
       <Router>
         <Routes>
           <Route
@@ -54,7 +59,8 @@ function App() {
             path="/protected"
             element={
               <Protected>
-                <Logout />
+                <Navbar />
+
                 <Dashboard />
               </Protected>
             }
@@ -66,7 +72,8 @@ function App() {
           />
         </Routes>
       </Router>
-    </main>
+      {/* </main> */}
+    </>
   );
 }
 

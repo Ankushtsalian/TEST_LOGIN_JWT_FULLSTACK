@@ -6,9 +6,13 @@ import axios from "axios";
 
 const Login = ({ handleInput, formInput, setFormInput }) => {
   const { loginUsername, loginPassword } = formInput;
-  const [tokenLog, setTokenLog] = useState("");
+
+  const [token, setToken] = useState({ tokenLog: "", tokenDecoded: {} });
+
   const navigate = useNavigate();
 
+  const { tokenLog, tokenDecoded } = token;
+  // console.log(tokenDecoded);
   useEffect(() => {
     localStorage.removeItem("Token");
   });
@@ -19,8 +23,12 @@ const Login = ({ handleInput, formInput, setFormInput }) => {
         username: loginUsername,
         password: loginPassword,
       });
-      // console.log(response.data.msg.decoded);
-      setTokenLog(() => response.data.msg.token);
+
+      setToken((responseToken) => ({
+        ...responseToken,
+        tokenLog: response.data.msg.token,
+        tokenDecoded: response.data.msg.decoded,
+      }));
       setFormInput((formValue) => ({
         ...formValue,
 
@@ -32,60 +40,66 @@ const Login = ({ handleInput, formInput, setFormInput }) => {
       }));
       // if (token) navigate("/protected");
 
-      alert(
-        `Login Successfull with username : ${response.data.msg.decoded.username}`
-      );
+      setTimeout(() => {
+        alert(
+          `Login Successfull with username : ${response.data.msg.decoded.username}`
+        );
+      }, 250);
     } catch (error) {
       alert(error.response.data.msg);
     }
   };
+
   useEffect(() => {
     if (tokenLog) {
       localStorage.setItem("Token", tokenLog);
       navigate("/protected");
     }
+
     return () => {
       console.log("LOGIN");
     }; // eslint-disable-next-line
   }, [tokenLog]);
 
   return (
-    <div className="login-card">
-      <div>
-        <h2>Login</h2>
-        <h3>Enter your credentials</h3>
-        <form className="login-form">
-          <input
-            spellCheck="false"
-            className="control"
-            name="loginUsername"
-            type="text"
-            placeholder="Username"
-            onChange={handleInput}
-          />
-          <Password
-            placeholder="Password"
-            name="loginPassword"
-            handleInput={handleInput}
-          />
+    <main className="container ">
+      <div className="login-card">
+        <div>
+          <h2>Login</h2>
+          <h3>Enter your credentials</h3>
+          <form className="login-form">
+            <input
+              spellCheck="false"
+              className="control"
+              name="loginUsername"
+              type="text"
+              placeholder="Username"
+              onChange={handleInput}
+            />
+            <Password
+              placeholder="Password"
+              name="loginPassword"
+              handleInput={handleInput}
+            />
 
-          <button
-            className="control"
-            type="button"
-            disabled={!loginUsername || !loginPassword}
-            onClick={handleLogin}
-          >
-            LOGIN
-          </button>
-        </form>
+            <button
+              className="control"
+              type="button"
+              disabled={!loginUsername || !loginPassword}
+              onClick={handleLogin}
+            >
+              LOGIN
+            </button>
+          </form>
+        </div>
+        <div className="Redirect">
+          <div>New User, Please Register</div>
+          <Link to="/">
+            &#x2190; <span>Create your account</span>
+          </Link>
+        </div>
       </div>
-      <div className="Redirect">
-        <div>New User, Please Register</div>
-        <Link to="/">
-          &#x2190; <span>Create your account</span>
-        </Link>
-      </div>
-    </div>
+    </main>
   );
 };
 

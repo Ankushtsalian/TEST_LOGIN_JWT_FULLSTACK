@@ -24,50 +24,52 @@ const Register = ({ formInput, handleInput }) => {
   };
 
   return (
-    <div className="register-card">
-      <div>
-        <h2>Register</h2>
-        <h3>Enter your credentials</h3>
-        <form className="register-form">
-          <input
-            spellCheck="false"
-            className="control"
-            name="registerUsername"
-            type="text"
-            placeholder="Username"
-            onChange={handleInput}
-          />
+    <main className="container ">
+      <div className="register-card">
+        <div>
+          <h2>Register</h2>
+          <h3>Enter your credentials</h3>
+          <form className="register-form">
+            <input
+              spellCheck="false"
+              className="control"
+              name="registerUsername"
+              type="text"
+              placeholder="Username"
+              onChange={handleInput}
+            />
 
-          <Password
-            placeholder="Password"
-            name="registerPassword"
-            handleInput={handleInput}
-          />
-          <Password
-            placeholder="Re-Enter-password"
-            name="registerResetPassword"
-            handleInput={handleInput}
-          />
+            <Password
+              placeholder="Password"
+              name="registerPassword"
+              handleInput={handleInput}
+            />
+            <Password
+              placeholder="Re-Enter-password"
+              name="registerResetPassword"
+              handleInput={handleInput}
+            />
 
-          <button
-            className="control"
-            type="button"
-            disabled={
-              !registerUsername || !registerPassword || !registerResetPassword
-            }
-            onClick={handleRegister}
-          >
-            Register
-          </button>
-        </form>
+            <button
+              className="control"
+              type="button"
+              disabled={
+                !registerUsername || !registerPassword || !registerResetPassword
+              }
+              onClick={handleRegister}
+            >
+              Register
+            </button>
+          </form>
+        </div>
+        <div className="Redirect">
+          <div>Already have an account?</div>
+          <Link to="/login">
+            &#x2190; <span>Sign In</span>
+          </Link>
+        </div>
       </div>
-      <div className="Redirect">
-        <div>Already have an account?</div>
-        <Link to="/login">
-          &#x2190; <span>Sign In</span>
-        </Link>
-      </div>
-    </div>
+    </main>
   );
 };
 
