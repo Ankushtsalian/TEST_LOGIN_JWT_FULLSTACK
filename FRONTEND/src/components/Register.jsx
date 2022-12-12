@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import Password from "./Password";
 
 const Register = ({ formInput, handleInput }) => {
-  const [token, setToken] = useState("");
-
   const { registerUsername, registerPassword, registerResetPassword } =
     formInput;
 
@@ -18,17 +16,17 @@ const Register = ({ formInput, handleInput }) => {
           password: registerPassword,
         }
       );
-      setToken(response.data.msg.token);
+      alert(response.data.msg.username);
     } catch (error) {
-      console.log(error.message);
+      alert(error.response.data.msg);
     }
   };
-  useEffect(() => {
-    localStorage.setItem("Token", token);
-    return () => {
-      console.log("done");
-    };
-  }, [token]);
+  // useEffect(() => {
+  //   localStorage.setItem("Token", token);
+  //   return () => {
+  //     console.log("done");
+  //   };
+  // }, [token]);
 
   return (
     <div className="register-card">

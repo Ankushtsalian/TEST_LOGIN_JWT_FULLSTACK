@@ -1,17 +1,20 @@
+import { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 import Password from "./Password";
 import axios from "axios";
 
 const Login = ({ handleInput, formInput }) => {
   const { loginUsername, loginPassword } = formInput;
-
+  const [token, setToken] = useState("");
   const handleLogin = async () => {
     try {
       const response = await axios.post("http://localhost:5000/api/v1/login", {
         username: loginUsername,
         password: loginPassword,
       });
-      console.log(response.data.msg);
+      // console.log(response.data.msg.decoded);
+      setToken(response.data.msg.token);
       alert(
         `Login Successfull with username : ${response.data.msg.decoded.username}`
       );
@@ -19,6 +22,12 @@ const Login = ({ handleInput, formInput }) => {
       alert(error.response.data.msg);
     }
   };
+  useEffect(() => {
+    localStorage.setItem("Token", token);
+    return () => {
+      console.log("done");
+    };
+  }, [token]);
   return (
     <div className="login-card">
       <div>

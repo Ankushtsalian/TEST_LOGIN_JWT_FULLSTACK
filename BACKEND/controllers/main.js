@@ -18,7 +18,7 @@ const register = async (req, res) => {
 
   await registerSchema.create({ username, password, token });
 
-  res.status(200).json({ msg: { username, token } });
+  res.status(200).json({ msg: { username } });
 };
 
 /**---------------------------REGISTER-------------------------------------- */
@@ -36,7 +36,8 @@ const login = async (req, res) => {
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
   if (decoded.username === username)
-    return res.status("200").json({ msg: { decoded } });
+    return res.status("200").json({ msg: { decoded, token } });
+  throw new CustomAPIError("Unathorized User", 404);
 };
 
 /**---------------------------LOGIN-------------------------------------- */
