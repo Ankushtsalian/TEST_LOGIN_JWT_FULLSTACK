@@ -6,7 +6,7 @@ const CustomAPIError = require("../errors/custom-error");
 
 const register = async (req, res) => {
   const { username, password } = req.body;
-  const findUser = await registerSchema.find({ username });
+  const findUser = await registerSchema.find({ username, password });
   if (findUser.length !== 0) {
     throw new CustomAPIError("User Exist", 401);
   }
@@ -27,16 +27,16 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   const { username, password } = req.body;
-  const { authorization } = req.headers;
+  // const { authorization } = req.headers;
   const findUser = await registerSchema.find({ username, password });
-  console.log(findUser);
-  if (findUser.length === 0) {
-    throw new CustomAPIError("User not Exist", 401);
-  }
-  const token = authorization.split(" ")[1];
+  if (findUser.length === 0) throw new CustomAPIError("Unathorized User", 404);
+
+  const [{ token }] = findUser;
+
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-  res.status("200").json({ msg: { decoded } });
+  if (decoded.username === username)
+    return res.status("200").json({ msg: { decoded } });
 };
 
 /**---------------------------LOGIN-------------------------------------- */

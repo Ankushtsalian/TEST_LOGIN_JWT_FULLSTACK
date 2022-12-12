@@ -12,8 +12,11 @@ const Login = ({ handleInput, formInput }) => {
         password: loginPassword,
       });
       console.log(response.data.msg);
+      alert(
+        `Login Successfull with username : ${response.data.msg.decoded.username}`
+      );
     } catch (error) {
-      console.log(error.message);
+      alert(error.response.data.msg);
     }
   };
   return (
