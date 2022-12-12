@@ -21,12 +21,6 @@ const Register = ({ formInput, handleInput }) => {
       alert(error.response.data.msg);
     }
   };
-  // useEffect(() => {
-  //   localStorage.setItem("Token", token);
-  //   return () => {
-  //     console.log("done");
-  //   };
-  // }, [token]);
 
   return (
     <div className="register-card">

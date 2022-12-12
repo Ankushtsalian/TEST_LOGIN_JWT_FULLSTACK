@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
 import Password from "./Password";
 import axios from "axios";
 
 const Login = ({ handleInput, formInput }) => {
   const { loginUsername, loginPassword } = formInput;
-  const [token, setToken] = useState("");
+  const [tokenLog, setTokenLog] = useState("");
+  const navigate = useNavigate();
   const handleLogin = async () => {
     try {
       const response = await axios.post("http://localhost:5000/api/v1/login", {
@@ -14,7 +15,9 @@ const Login = ({ handleInput, formInput }) => {
         password: loginPassword,
       });
       // console.log(response.data.msg.decoded);
-      setToken(response.data.msg.token);
+      setTokenLog(() => response.data.msg.token);
+      // if (token) navigate("/protected");
+
       alert(
         `Login Successfull with username : ${response.data.msg.decoded.username}`
       );
@@ -23,11 +26,22 @@ const Login = ({ handleInput, formInput }) => {
     }
   };
   useEffect(() => {
-    localStorage.setItem("Token", token);
+    if (tokenLog) {
+      localStorage.setItem("Token", tokenLog);
+      navigate("/protected");
+    }
     return () => {
-      console.log("done");
+      console.log("LOGIN");
     };
-  }, [token]);
+  }, [tokenLog]);
+  // useEffect(() => {
+  //   if (tokenLog) {
+  //     navigate("/protected");
+  //   }
+  //   return () => {
+  //     console.log("done");
+  //   };
+  // }, [tokenLog]);
   return (
     <div className="login-card">
       <div>
@@ -42,13 +56,12 @@ const Login = ({ handleInput, formInput }) => {
             placeholder="Username"
             onChange={handleInput}
           />
-
           <Password
             placeholder="Password"
             name="loginPassword"
             handleInput={handleInput}
           />
-
+          {/* <Link to="/protected"> */}{" "}
           <button
             className="control"
             type="button"
@@ -57,6 +70,7 @@ const Login = ({ handleInput, formInput }) => {
           >
             LOGIN
           </button>
+          {/* </Link> */}
         </form>
       </div>
       <div className="Redirect">

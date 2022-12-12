@@ -4,7 +4,9 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Logout from "./components/Logout";
+import Protected from "./components/Protected";
 
 function App() {
   const [formInput, setFormInput] = useState({
@@ -15,8 +17,10 @@ function App() {
     registerResetPassword: "",
   });
 
-  // const { registerPassword, registerResetPassword } = formInput;
-  // console.log(formInput);
+  useEffect(() => {
+    localStorage.removeItem("Token");
+  }, []);
+
   const handleInput = (e) => {
     const { name, value } = e.target;
     setFormInput((formValue) => ({ ...formValue, [name]: value }));
@@ -39,7 +43,21 @@ function App() {
             path="/login"
             element={<Login handleInput={handleInput} formInput={formInput} />}
           />
-          <Route path="/Dashboard" element={<Dashboard />} />
+
+          <Route
+            path="/protected"
+            element={
+              <Protected>
+                <Logout />
+                <Dashboard />
+              </Protected>
+            }
+          ></Route>
+
+          <Route
+            path="*"
+            element={<h1>-------------------- NOT FOUND 404 --------------</h1>}
+          />
         </Routes>
       </Router>
     </main>

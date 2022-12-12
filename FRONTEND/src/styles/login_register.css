@@ -71,3 +71,14 @@
     margin: 50px 0 0;
  
 }
+
+
+/* *-------------------------------------------DASHBOARD------------------------------------------ */
+.dashboard{
+    width: 700px;
+    padding: 50px 30px;
+    border-radius: 1.25rem;
+    background-image: url("../background.svg");
+    animation: rotate 1.5s infinite alternate linear;
+  
+}
