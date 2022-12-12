@@ -1,9 +1,21 @@
 import { Link } from "react-router-dom";
 import Password from "./Password";
-import Register from "./Register";
+import axios from "axios";
 
 const Login = ({ handleInput, formInput }) => {
   const { loginUsername, loginPassword } = formInput;
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post("http://localhost:5000/api/v1/login", {
+        username: loginUsername,
+        password: loginPassword,
+      });
+      console.log(response.data.msg);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <div className="login-card">
       <div>
@@ -29,6 +41,7 @@ const Login = ({ handleInput, formInput }) => {
             className="control"
             type="button"
             disabled={!loginUsername || !loginPassword}
+            onClick={handleLogin}
           >
             LOGIN
           </button>

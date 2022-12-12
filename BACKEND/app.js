@@ -5,6 +5,9 @@ const connectDB = require("./db/connect");
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
+var cors = require("cors");
+
+app.use(cors());
 
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");

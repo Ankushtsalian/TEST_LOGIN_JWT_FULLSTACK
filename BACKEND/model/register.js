@@ -9,6 +9,9 @@ const registerSchema = new mongoose.Schema({
     type: String,
     required: [true, "must provide username"],
   },
+  token: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("register", registerSchema);

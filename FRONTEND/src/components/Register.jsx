@@ -1,11 +1,34 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Password from "./Password";
 
 const Register = ({ formInput, handleInput }) => {
-  const [dis, setDis] = useState(true);
+  const [token, setToken] = useState("");
+
   const { registerUsername, registerPassword, registerResetPassword } =
     formInput;
+
+  const handleRegister = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/v1/register",
+        {
+          username: registerUsername,
+          password: registerPassword,
+        }
+      );
+      setToken(response.data.msg.token);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  useEffect(() => {
+    localStorage.setItem("Token", token);
+    return () => {
+      console.log("done");
+    };
+  }, [token]);
 
   return (
     <div className="register-card">
