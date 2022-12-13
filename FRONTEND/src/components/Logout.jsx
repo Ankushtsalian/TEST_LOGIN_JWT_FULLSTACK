@@ -13,8 +13,7 @@ const Logout = () => {
 
   useEffect(() => {
     if (!logToken) {
-      // localStorage.removeItem("Token");3
-
+      // localStorage.removeItem("Token");
       navigate("/login");
     }
     return () => {
