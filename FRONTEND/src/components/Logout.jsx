@@ -19,7 +19,8 @@ const Logout = () => {
     }
     return () => {
       console.log("LOGOUT");
-    }; // eslint-disable-next-line
+    };
+    // eslint-disable-next-line
   }, [logToken]);
 
   return (
