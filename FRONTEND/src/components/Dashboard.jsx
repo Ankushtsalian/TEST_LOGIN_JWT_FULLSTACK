@@ -1,7 +1,12 @@
 import React from "react";
+import { Sidebar } from "./Sidebar";
 
 const Dashboard = () => {
-  return <main>TEST Dashboard</main>;
+  return (
+    <main>
+      <Sidebar />
+    </main>
+  );
 };
 
 export default Dashboard;

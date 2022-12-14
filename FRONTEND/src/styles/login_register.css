@@ -95,3 +95,13 @@
     animation: rotate 1.5s infinite alternate linear;
   
 }
+
+.log-out{
+    font-size: 18px;
+    font-weight: bold;
+    opacity: 0.85;
+    margin-right: 10px;
+}
+.log-out:hover{
+    opacity: 1.5;
+}

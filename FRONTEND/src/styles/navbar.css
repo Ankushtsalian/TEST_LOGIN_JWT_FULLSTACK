@@ -20,6 +20,10 @@ button {
 :is(.navbar, .burger, .dropdowns) {
     position: fixed;
     top: 0;
+    width: 100%;
+}
+.dropdowns {
+  
     width: 90%;
 }
 
@@ -30,11 +34,10 @@ button {
     justify-content: space-between;
     align-items: stretch;
     height: 72px;
-    /* background: #19191c; */
-    /* background-image: url("../Assets/background.svg"); */
     background: transparent;
     animation: rotate 1.5s infinite alternate linear;
     color: #fff;
+border-bottom: 1px solid #000;
 }
 
 .burger {
