@@ -3,7 +3,7 @@
     padding: 50px 30px;
     border-radius: 1.25rem;
     /* background:#703eff; */
-    background-image: url("../background.svg");
+    background-image: url("../Assets/background.svg");
     animation: rotate 1.5s infinite alternate linear;
   
     text-align: center;
@@ -39,7 +39,7 @@
     width: 100%;
     height: 56px;
     padding: 0 16px;
-    background-image: url("../background.svg");
+    background-image: url("../Assets/background.svg");
     animation: rotate 1.5s infinite alternate linear;
     color: #f9f9f9;
     border: 0;
@@ -66,7 +66,7 @@
 }
 
 .Redirect a{
-    background-image: url("../background.svg");
+    background-image: url("../Assets/background.svg");
     animation: rotate 3s infinite alternate linear;
     margin-top: 50px;
 }
@@ -91,7 +91,7 @@
     width: 700px;
     padding: 50px 30px;
     border-radius: 1.25rem;
-    background-image: url("../background.svg");
+    background-image: url("../Assets/background.svg");
     animation: rotate 1.5s infinite alternate linear;
   
 }

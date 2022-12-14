@@ -16,7 +16,7 @@ body,
 
 
 .container {
-  background-image: url("background.svg");
+  background-image: url("./Assets/background.svg");
   background-repeat: no-repeat;
   background-size: cover;
   font-family: "Euclid Circular A";

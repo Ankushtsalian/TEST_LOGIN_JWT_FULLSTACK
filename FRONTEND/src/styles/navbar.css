@@ -43,8 +43,12 @@ body {
     display: flex;
     align-items: stretch;
     height: 72px;
-    background: #19191c;
-    color: #f9f9f9;
+    /* background: #19191c; */
+    /* background-image: url("../Assets/background.svg"); */
+    background: transparent;
+    animation: rotate 1.5s infinite alternate linear;
+  
+    color: #fff;
   }
   
   .burger {
@@ -54,7 +58,7 @@ body {
     place-items: center;
     width: 72px;
     height: 72px;
-    background-image: url(" ../Assets/menu.svg");
+    /* background-image: url(" ../Assets/menu.svg"); */
     background-repeat: no-repeat;
     background-position: center;
   }
