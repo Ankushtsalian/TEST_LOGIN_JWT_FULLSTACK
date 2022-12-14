@@ -1,14 +1,23 @@
-import React from "react";
-import Logout from "./Logout";
-import "../styles/navbar.css";
-
-import chevron from "../Assets/chevron.svg";
-const Navbar = () => {
-  return (
-    // <nav>
-    //   Navbar
-    //   <Logout />
-    // </nav>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link href="./styles.css" rel="stylesheet" />
+  </head>
+  <body>
     <nav class="navbar">
       <button onclick="toggleMenu()" class="burger"></button>
       <button class="button">Home</button>
@@ -16,7 +25,7 @@ const Navbar = () => {
         <div class="dropdown">
           <button class="button">
             Services
-            <img src={chevron} />
+            <img src="chevron.svg" />
           </button>
           <div class="dropdown-menu">
             <button>UX/UI Design</button>
@@ -27,7 +36,7 @@ const Navbar = () => {
         <div class="dropdown">
           <button class="button">
             Products
-            <img src={chevron} />
+            <img src="chevron.svg" />
           </button>
           <div class="dropdown-menu">
             <button>Learn CSS Ebook</button>
@@ -38,7 +47,7 @@ const Navbar = () => {
         <div class="dropdown">
           <button class="button">
             Support
-            <img src={chevron} />
+            <img src="chevron.svg" />
           </button>
           <div class="dropdown-menu">
             <button>Live Chat</button>
@@ -48,7 +57,8 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
-  );
-};
-
-export default Navbar;
+    <script>
+      const toggleMenu = () => document.body.classList.toggle("open");
+    </script>
+  </body>
+</html>
