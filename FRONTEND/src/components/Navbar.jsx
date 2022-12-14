@@ -5,10 +5,6 @@ import "../styles/navbar.css";
 import chevron from "../Assets/chevron.svg";
 const Navbar = () => {
   return (
-    // <nav>
-    //   Navbar
-    //   <Logout />
-    // </nav>
     <nav class="navbar">
       <button onclick="toggleMenu()" class="burger"></button>
       <button class="button">Home</button>
@@ -47,6 +43,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+      <Logout />
     </nav>
   );
 };

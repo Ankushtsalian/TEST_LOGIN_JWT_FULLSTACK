@@ -23,9 +23,9 @@ const Logout = () => {
   }, [logToken]);
 
   return (
-    <div>
+    <>
       <button onClick={handleLogout}> Sign out</button>
-    </div>
+    </>
   );
 };
 
