@@ -4,12 +4,14 @@ import menuItems from "../Assets/menuItems";
 const Sidebar = ({ isClosed }) => {
   return (
     <div
-      className={`${!isClosed ? "" : "sidebarClose"}
+      className={`${isClosed ? "sidebar sidebarShow" : "sidebar  sidebarClose"}
     `}
     >
-      {menuItems.map((item, i) => (
-        <li key={i}>{item.name}</li>
-      ))}{" "}
+      <ul>
+        {menuItems.map((item, i) => (
+          <li key={i}>{item.name}</li>
+        ))}
+      </ul>
     </div>
   );
 };

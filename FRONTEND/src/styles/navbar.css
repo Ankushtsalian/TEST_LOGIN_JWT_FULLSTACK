@@ -1,5 +1,3 @@
-
-
 button {
     border: 0;
     padding: 0;
@@ -22,8 +20,9 @@ button {
     top: 0;
     width: 100%;
 }
+
 .dropdowns {
-  
+
     width: 80%;
 }
 
@@ -37,7 +36,7 @@ button {
     background: transparent;
     animation: rotate 1.5s infinite alternate linear;
     color: #fff;
-border-bottom: 1px solid #000;
+    border-bottom: 1px solid #000;
 }
 
 .burger {
@@ -51,6 +50,7 @@ border-bottom: 1px solid #000;
     background-repeat: no-repeat;
     background-position: center; */
 }
+
 body.open .burger {
     background-image: url(" ../Assets/close.svg");
 }
@@ -188,7 +188,20 @@ body.open .burger {
     opacity: 1;
 }
 
-.sidebarShow{
-/* display: block; */
+.sidebarShow {
+   left: 100vh; 
 }
-.sidebarClose{display: none;}
+
+.sidebarClose {
+    left: -100vh;
+}
+
+.sidebar {
+    padding: 50px 10px;
+    border: 1px solid black;
+    height: 90%;
+    position: absolute;
+    width: 30vh;
+    top: 4.5rem;
+    transition: all 0.5s;
+}

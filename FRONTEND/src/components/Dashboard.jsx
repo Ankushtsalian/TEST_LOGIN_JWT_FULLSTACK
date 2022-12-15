@@ -3,9 +3,9 @@ import Sidebar from "./Sidebar";
 
 const Dashboard = ({ isClosed }) => {
   return (
-    <main>
+    <aside>
       <Sidebar isClosed={isClosed} />
-    </main>
+    </aside>
   );
 };
 
