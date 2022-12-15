@@ -4,9 +4,10 @@ import "../styles/navbar.css";
 
 import chevron from "../Assets/chevron.svg";
 const Navbar = () => {
+  const toggleMenu = () => document.body.classList.toggle("open");
   return (
     <nav className="navbar">
-      <button onClick="toggleMenu()" className="burger"></button>
+      <button onClick={toggleMenu} className="burger"></button>
       <button className="button">Home</button>
       <div className="dropdowns">
         <div className="dropdown">

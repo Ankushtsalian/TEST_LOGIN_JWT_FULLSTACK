@@ -69,8 +69,9 @@ const NavButton = ({ onClick, name, icon, isActive, hasSubNav }) => (
 const SubMenu = ({ item, activeItem, handleClick }) => {
   const navRef = useRef(null);
 
-  const isSubNavOpen = (items) => {};
-  // items.some((i) => i === activeItem) || item === activeItem;
+  const isSubNavOpen = (name, items) =>
+    // console.log("items", name, items);
+    items.some((i) => i.name === activeItem.name) || item === activeItem;
 
   return (
     <div
@@ -82,12 +83,14 @@ const SubMenu = ({ item, activeItem, handleClick }) => {
       }}
     >
       <div ref={navRef} className="sub-nav-inner">
-        {item?.items.map((subItem) => (
-          <NavButton
-            onClick={handleClick}
-            name={subItem}
-            isActive={activeItem === subItem}
-          />
+        {item?.items.map((subItem, i) => (
+          <div key={i}>
+            <NavButton
+              onClick={handleClick}
+              name={subItem}
+              isActive={activeItem === subItem}
+            />
+          </div>
         ))}
       </div>
     </div>
@@ -98,8 +101,8 @@ export const Sidebar = () => {
   const [activeItem, setActiveItem] = useState("");
 
   const handleClick = (item) => {
-    console.log("activeItem", activeItem);
     setActiveItem(item !== activeItem ? item : "");
+    console.log("activeItem", item);
   };
 
   return (
@@ -109,7 +112,7 @@ export const Sidebar = () => {
         <div key={i}>
           {!item.items && (
             <NavButton
-              onClick={() => handleClick(Item)}
+              onClick={() => handleClick(item)}
               name={item.name}
               icon={item.icon}
               isActive={activeItem === item.name}
