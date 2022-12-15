@@ -12,6 +12,7 @@ const Sidebar = ({ isClosed }) => {
           <li key={i}>{item.name}</li>
         ))}
       </ul>
+      <pre>{JSON.stringify(menuItems, null, 2)}</pre>
     </div>
   );
 };
