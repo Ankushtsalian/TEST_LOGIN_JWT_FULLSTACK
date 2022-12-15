@@ -7,7 +7,24 @@ const Password = ({ placeholder, handleInput, name }) => {
   };
   return (
     <div className="password">
-      <input
+      <div class="textbox">
+        <input
+          className="input"
+          required
+          name={name}
+          type={toggleButton ? "text" : "password"}
+          // placeholder={placeholder}
+          onChange={handleInput}
+        />
+        <label>Password</label>
+        <span class="material-symbols-outlined"> key </span>
+        <button
+          className={toggleButton ? "toggle" : "toggle showing"}
+          type="button"
+          onClick={togglePassword}
+        ></button>
+      </div>
+      {/* <input
         autoComplete="off"
         spellCheck="false"
         className="control"
@@ -20,7 +37,7 @@ const Password = ({ placeholder, handleInput, name }) => {
         className={toggleButton ? "toggle" : "toggle showing"}
         type="button"
         onClick={togglePassword}
-      ></button>
+      ></button> */}
     </div>
   );
 };
