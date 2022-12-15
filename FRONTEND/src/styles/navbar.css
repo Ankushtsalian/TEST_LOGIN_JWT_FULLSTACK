@@ -189,7 +189,7 @@ body.open .burger {
 }
 
 .sidebarShow {
-   left: 100vh; 
+   left: 0; 
 }
 
 .sidebarClose {
@@ -197,11 +197,11 @@ body.open .burger {
 }
 
 .sidebar {
-    padding: 50px 10px;
+    /* padding: 50px 10px; */
     border: 1px solid black;
-    height: 90%;
+    /* height: 90%; */
     position: absolute;
     width: 30vh;
     top: 4.5rem;
-    transition: all 0.5s;
+    transition: all 0.85s;
 }
