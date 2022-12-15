@@ -199,7 +199,7 @@ body.open .burger {
 .sidebar {
     /* padding: 50px 10px; */
     border: 1px solid black;
-    /* height: 90%; */
+    /* height: 100%; */
     position: absolute;
     width: 30vh;
     top: 4.5rem;

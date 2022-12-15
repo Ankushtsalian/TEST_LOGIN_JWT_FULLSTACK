@@ -1,7 +1,9 @@
 import React from "react";
 import menuItems from "../Assets/menuItems";
-
+import "../styles/sidebar.css";
+import NavMenu from "./NavMenu";
 const Sidebar = ({ isClosed }) => {
+  const handleSubmenu = () => {};
   return (
     <div
       className={`${isClosed ? "sidebar sidebarShow" : "sidebar  sidebarClose"}
@@ -9,10 +11,11 @@ const Sidebar = ({ isClosed }) => {
     >
       <ul>
         {menuItems.map((item, i) => (
-          <li key={i}>{item.name}</li>
+          <>
+            <NavMenu item={item} handleSubmenu={handleSubmenu} i={i} />
+          </>
         ))}
       </ul>
-      <pre>{JSON.stringify(menuItems, null, 2)}</pre>
     </div>
   );
 };
