@@ -5,13 +5,13 @@ import "../styles/dashboard.css";
 
 const Dashboard = ({ isClosed }) => {
   return (
-    <div>
+    <div className="main-container">
       <aside>
         <Sidebar isClosed={isClosed} />
       </aside>
-      {/* <div className="main">
+      <div className="main">
         <pre>{JSON.stringify(menuItems, null, 2)}</pre>
-      </div> */}
+      </div>
     </div>
   );
 };

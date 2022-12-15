@@ -26,7 +26,7 @@ button {
     width: 80%;
 }
 
-    
+
 .navbar {
     z-index: 1;
     left: 0;
@@ -186,21 +186,4 @@ body.open .burger {
 
 .dropdown-menu>button:hover {
     opacity: 1;
-}
-
-.sidebarShow {
-   left: 0; 
-}
-
-.sidebarClose {
-    left: -100vh;
-}
-
-.sidebar {
-    /* padding: 50px 10px; */
-    border: 1px solid black;
-    /* height: 100%; */
-    position: absolute;
-    top: 4.5rem;
-    transition: all 0.85s;
 }
