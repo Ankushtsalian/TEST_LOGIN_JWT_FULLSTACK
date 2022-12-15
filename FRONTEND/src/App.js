@@ -23,6 +23,7 @@ function App() {
   });
 
   /**-------------------------------------------------------------------- */
+  const [isClosed, setIsClosed] = useState(false);
 
   /**-------------------------------------------------------------------- */
   const handleInput = (e) => {
@@ -59,9 +60,9 @@ function App() {
             path="/protected"
             element={
               <Protected>
-                <Navbar />
+                <Navbar isClosed={isClosed} setIsClosed={setIsClosed} />
 
-                <Dashboard />
+                <Dashboard isClosed={isClosed} />
               </Protected>
             }
           ></Route>

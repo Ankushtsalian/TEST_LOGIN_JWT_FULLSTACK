@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Logout from "./Logout";
 import "../styles/navbar.css";
 import Hamburger from "./Hamburger";
-
 import chevron from "../Assets/chevron.svg";
-const Navbar = () => {
+
+const Navbar = ({ isClosed, setIsClosed }) => {
+  // const [isClosed, setIsClosed] = useState(false);
   // const toggleMenu = () => document.body.classList.toggle("open");
+
   return (
     <nav className="navbar">
-      <Hamburger />
+      <Hamburger isClosed={isClosed} setIsClosed={setIsClosed} />
       <button className="button">Home</button>
       <div className="dropdowns">
         <div className="dropdown">

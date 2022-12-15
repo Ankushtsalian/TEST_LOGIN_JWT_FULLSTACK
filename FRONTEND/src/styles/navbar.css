@@ -24,7 +24,7 @@ button {
 }
 .dropdowns {
   
-    width: 90%;
+    width: 80%;
 }
 
 .navbar {
@@ -41,17 +41,16 @@ border-bottom: 1px solid #000;
 }
 
 .burger {
-    z-index: 3;
+    /* z-index: 3;
     right: 0;
     display: grid;
     place-items: center;
     width: 72px;
     height: 72px;
-    /* background-image: url(" ../Assets/menu.svg"); */
+    background-image: url(" ../Assets/menu.svg");
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center; */
 }
-
 body.open .burger {
     background-image: url(" ../Assets/close.svg");
 }
@@ -188,3 +187,8 @@ body.open .burger {
 .dropdown-menu>button:hover {
     opacity: 1;
 }
+
+.sidebarShow{
+/* display: block; */
+}
+.sidebarClose{display: none;}

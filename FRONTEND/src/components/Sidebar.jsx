@@ -1,13 +1,15 @@
 import React from "react";
 import menuItems from "../Assets/menuItems";
 
-const Sidebar = () => {
+const Sidebar = ({ isClosed }) => {
   return (
-    <div>
-      {" "}
+    <div
+      className={`${!isClosed ? "" : "sidebarClose"}
+    `}
+    >
       {menuItems.map((item, i) => (
         <li key={i}>{item.name}</li>
-      ))}
+      ))}{" "}
     </div>
   );
 };

@@ -4,8 +4,6 @@ const Protected = ({ children }) => {
   const navigate = useNavigate();
 
   const token = localStorage.getItem("Token");
-  console.log("logToken : " + " " + token);
-
   if (!token) {
     return navigate("/login");
   }

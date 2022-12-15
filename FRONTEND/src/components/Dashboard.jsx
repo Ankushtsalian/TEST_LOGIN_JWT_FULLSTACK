@@ -1,10 +1,10 @@
 import React from "react";
 import Sidebar from "./Sidebar";
 
-const Dashboard = () => {
+const Dashboard = ({ isClosed }) => {
   return (
     <main>
-      <Sidebar />
+      <Sidebar isClosed={isClosed} />
     </main>
   );
 };
