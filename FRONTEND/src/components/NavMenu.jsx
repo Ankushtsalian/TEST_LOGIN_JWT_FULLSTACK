@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import SubMenu from "./SubMenu";
 
-const NavMenu = ({ item, handleSubmenu, i }) => {
+const NavMenu = ({ item, i }) => {
+  const [subMenu, setSubmenu] = useState(false);
+
+  const handleSubmenu = () => {
+    setSubmenu(!subMenu);
+  };
   return (
-    <li key={i}>
+    <>
       {item.name}
       {item.items && <button onClick={handleSubmenu}>more</button>}
-      <ul>
-        {item?.items?.map((i, idx) => (
-          <li key={i}>{i}</li>
-        ))}
+
+      <ul
+        className={`${
+          subMenu ? "subMenu subMenuShow" : "subMenu subMenuClose"
+        }`}
+      >
+        <SubMenu item={item} handleSubmenu={handleSubmenu} subMenu={subMenu} />
       </ul>
-    </li>
+    </>
   );
 };
 

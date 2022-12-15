@@ -4,10 +4,23 @@
     font-size: 20px;
     list-style: none;
     padding:0 0 5px;
+    color: #fff;
    }
-   ul{
-    /* border-bottom: 1px solid #000; */
+  
+
+    /* .subMenu{    transition: all 0.85s;} */
+
+   .subMenuShow{
+    opacity: 1;
+    transition: all 0.85s;
+    /* display: block; */
+
    }
+.subMenuClose{
+  opacity: 0;
+  height: 0;
+  transition: all 0.85s;
+  /* display: none; */
 
-
+}
  
