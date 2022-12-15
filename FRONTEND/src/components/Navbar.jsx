@@ -1,13 +1,14 @@
 import React from "react";
 import Logout from "./Logout";
 import "../styles/navbar.css";
+import Hamburger from "./Hamburger";
 
 import chevron from "../Assets/chevron.svg";
 const Navbar = () => {
-  const toggleMenu = () => document.body.classList.toggle("open");
+  // const toggleMenu = () => document.body.classList.toggle("open");
   return (
     <nav className="navbar">
-      <button onClick={toggleMenu} className="burger"></button>
+      <Hamburger />
       <button className="button">Home</button>
       <div className="dropdowns">
         <div className="dropdown">
