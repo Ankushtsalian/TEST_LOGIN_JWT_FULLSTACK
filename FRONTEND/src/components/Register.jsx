@@ -30,15 +30,25 @@ const Register = ({ formInput, handleInput }) => {
           <h2>Register</h2>
           <h3>Enter your credentials</h3>
           <form className="register-form">
-            <input
+            {/* <input
               spellCheck="false"
               className="control"
               name="registerUsername"
               type="text"
               placeholder="Username"
               onChange={handleInput}
-            />
-
+            /> */}
+            <div class="textbox">
+              <input
+                className="input"
+                type="text"
+                required
+                name="registerUsername"
+                onChange={handleInput}
+              />
+              <label>Username</label>
+              <span class="material-symbols-outlined"> account_circle </span>
+            </div>
             <Password
               placeholder="Password"
               name="registerPassword"

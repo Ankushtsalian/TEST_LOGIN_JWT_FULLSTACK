@@ -143,6 +143,15 @@
   
   input:focus {
     /* border-color: #fff; */
+    background: transparent;
+  }
+  
+  input{
+    /* border-color: #fff; */
+    background: transparent;
+  }
+  b{
+    font-size: 18px;
   }
   
   :is(input:focus, input:valid) ~ span {
@@ -176,7 +185,7 @@
 }
 p,a{
     color: #fff;
-    margin: 5px;
+    margin: 10px;
     text-decoration: none;
 }
 
