@@ -68,7 +68,7 @@ const Login = ({ handleInput, formInput, setFormInput }) => {
           <h2>Login</h2>
           <h3>Enter your credentials</h3>
           <form className="login-form">
-            <input
+            {/* <input
               spellCheck="false"
               className="control"
               name="loginUsername"
@@ -80,8 +80,45 @@ const Login = ({ handleInput, formInput, setFormInput }) => {
               placeholder="Password"
               name="loginPassword"
               handleInput={handleInput}
+            /> */}
+            {/* <form class="form1"> */}
+            <div class="textbox">
+              <input
+                className="input"
+                type="text"
+                required
+                name="loginUsername"
+                onChange={handleInput}
+              />
+              <label>Name</label>
+              <span class="material-symbols-outlined"> account_circle </span>
+            </div>
+            {/* <div class="textbox">
+              <input
+                className="input"
+                type="text"
+                required
+                name="loginUsername"
+                onChange={handleInput}
+              />
+              <label>Email</label>
+              <span class="material-symbols-outlined"> email </span>
+            </div> */}
+            <Password
+              placeholder="Password"
+              name="loginPassword"
+              handleInput={handleInput}
             />
 
+            {/* <button className="button" type="submit">
+          Join The Elitists
+          <span class="material-symbols-outlined"> arrow_forward </span>
+        </button> */}
+            {/* </form> */}
+            <p>
+              Signed up already?
+              <Link to="/">Create your account</Link>
+            </p>
             <button
               className="control"
               type="button"
@@ -94,12 +131,9 @@ const Login = ({ handleInput, formInput, setFormInput }) => {
         </div>
         <div className="Redirect">
           <div>New User, Please Register</div>
-          <Link to="/">
-            &#x2190; <span>Create your account</span>
-          </Link>
         </div>
       </div>
-      <form class="form1">
+      {/* <form class="form1">
         <div class="textbox">
           <input className="input" type="text" required />
           <label>Name</label>
@@ -118,13 +152,13 @@ const Login = ({ handleInput, formInput, setFormInput }) => {
         <p>
           Signed up already?
           <a href="#">Login here</a>
-        </p>
+        </p> */}
 
-        {/* <button className="button" type="submit">
+      {/* <button className="button" type="submit">
           Join The Elitists
           <span class="material-symbols-outlined"> arrow_forward </span>
         </button> */}
-      </form>
+      {/* </form> */}
     </main>
   );
 };
