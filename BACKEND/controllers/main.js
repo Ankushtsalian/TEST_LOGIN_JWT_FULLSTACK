@@ -42,10 +42,15 @@ const login = async (req, res) => {
 
 /**---------------------------LOGIN-------------------------------------- */
 
+const deleteUser = async (req, res) => {
+  await registerSchema.deleteMany();
+  return res.status("200").json({ msg: "Users  deleted" });
+};
+
 /**---------------------------DASHBOARD-------------------------------------- */
 const dashboard = async (req, res) => {
   res.send("hello dashboard");
 };
 /**---------------------------DASHBOARD-------------------------------------- */
 
-module.exports = { login, register, dashboard };
+module.exports = { login, register, dashboard, deleteUser };
