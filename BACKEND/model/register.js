@@ -38,4 +38,4 @@ registerSchema.methods.comparePassword = async function (candidatePassword) {
   return isMatch;
 };
 
-module.exports = mongoose.model("register", registerSchema);
+module.exports = mongoose.model("Register", registerSchema);

@@ -19,12 +19,12 @@ const JobSchema = new mongoose.Schema(
     },
     createdBy: {
       type: mongoose.Types.ObjectId,
-      ref: "User",
+      ref: "Registers",
       required: [true, "please provide user"],
     },
     createdByName: {
       type: String,
-      ref: "User",
+      ref: "Registers",
       required: [true, "please provide user"],
     },
   },
