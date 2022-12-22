@@ -23,16 +23,28 @@ const login = async (req, res) => {
   const { username, password } = req.body;
   // const { authorization } = req.headers;
 
-  const findUser = await registerSchema.find({ username, password });
-  if (findUser.length === 0) throw new CustomAPIError("Unathorized User", 404);
+  if (!username || !password)
+    throw new CustomAPIError("Please provide email and password", 400);
 
-  const [{ token }] = findUser;
+  const user = await registerSchema.findOne({ username });
 
-  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  if (!user) throw new CustomAPIError("Unathorized User", 404);
 
-  if (decoded.username === username)
-    return res.status("200").json({ msg: { decoded, token } });
-  throw new CustomAPIError("Unathorized User", 404);
+  const isPasswordCorrect = await user.comparePassword(password);
+
+  if (!isPasswordCorrect) throw new CustomAPIError("invalid Credentials", 401);
+
+  const token = user.createJWT();
+
+  return res.status("200").json({ msg: { username: user.name, token } });
+
+  // const [{ token }] = findUser;
+
+  // const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+  // if (decoded.username === username)
+  //   return res.status("200").json({ msg: { decoded, token } });
+  // throw new CustomAPIError("Unathorized User", 404);
 };
 
 /**---------------------------LOGIN-------------------------------------- */
