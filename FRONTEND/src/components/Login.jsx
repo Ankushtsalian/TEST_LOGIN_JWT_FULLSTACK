@@ -35,7 +35,7 @@ const Login = ({ handleInput, formInput, setFormInput }) => {
       setToken((responseToken) => ({
         ...responseToken,
         tokenLog: response.data.msg.token,
-        tokenDecoded: response.data.msg.decoded,
+        // tokenDecoded: response.data.msg.decoded,
       }));
       setFormInput((formValue) => ({
         ...formValue,

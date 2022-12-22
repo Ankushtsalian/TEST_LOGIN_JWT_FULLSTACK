@@ -54,10 +54,22 @@ const deleteUser = async (req, res) => {
   return res.status("200").json({ msg: "Users  deleted" });
 };
 
+const getAllUsers = async (req, res) => {
+  const users = await registerSchema.find().select("username");
+
+  res.status("200").json({ msg: users });
+};
+
 /**---------------------------DASHBOARD-------------------------------------- */
 const dashboard = async (req, res) => {
   res.send("hello dashboard");
 };
 /**---------------------------DASHBOARD-------------------------------------- */
 
-module.exports = { login, register, dashboard, deleteUser };
+module.exports = {
+  login,
+  register,
+  dashboard,
+  deleteUser,
+  getAllUsers,
+};
