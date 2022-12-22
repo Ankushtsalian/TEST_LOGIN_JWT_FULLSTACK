@@ -24,12 +24,13 @@ registerSchema.pre("save", async function () {
 
 registerSchema.methods.createJWT = function () {
   const userToken = jwt.sign(
-    { username: this.username },
+    { userId: this._id, username: this.username },
     process.env.JWT_SECRET,
     {
       expiresIn: "30d",
     }
   );
+  console.log(this._id);
   return userToken;
 };
 

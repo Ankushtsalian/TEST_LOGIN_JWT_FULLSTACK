@@ -18,7 +18,7 @@ const auth = (req, res, next) => {
     // const user = User.findById(payload.id).select("-password");
     // req.user = user;
 
-    req.user = { userId: payload.userId, name: payload.username };
+    req.user = { userId: payload.userId, username: payload.username };
 
     next();
   } catch (error) {

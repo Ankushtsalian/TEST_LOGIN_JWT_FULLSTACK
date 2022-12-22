@@ -4,6 +4,7 @@ const Job = require("../model/Job");
 const createJob = async (req, res) => {
   try {
     await Job.create(req.body);
+    console.log(req.user);
   } catch (error) {
     throw new CustomAPIError("Please provide email and password", 400);
   }
