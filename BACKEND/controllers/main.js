@@ -12,7 +12,7 @@ const register = async (req, res) => {
   const user = await registerSchema.create({ ...req.body });
   const token = user.createJWT();
 
-  res.status(200).json({ msg: { username: user.username } });
+  res.status(200).json({ msg: { username: user.username, token } });
 };
 
 /**---------------------------REGISTER-------------------------------------- */
