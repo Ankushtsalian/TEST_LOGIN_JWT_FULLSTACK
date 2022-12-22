@@ -56,7 +56,6 @@ const deleteUser = async (req, res) => {
 
 const getAllUsers = async (req, res) => {
   const users = await registerSchema.find().select("username");
-
   res.status("200").json({ msg: users });
 };
 

@@ -6,18 +6,20 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 var cors = require("cors");
-
+const authenticateUser = require("./middleware/auth");
 app.use(cors());
 
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 const router = require("./routes/main");
+const jobRouter = require("./routes/JobRoute");
 
 // middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use("/api/v1", router);
+app.use("/api/v1/job", authenticateUser, jobRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
