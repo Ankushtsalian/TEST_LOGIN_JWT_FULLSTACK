@@ -5,6 +5,9 @@ const connectDB = require("./db/connect");
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
+
+const fileUpload = require("express-fileupload");
+
 var cors = require("cors");
 const authenticateUser = require("./middleware/auth");
 app.use(cors());
@@ -17,6 +20,7 @@ const productRoutes = require("./routes/Product");
 // middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(fileUpload);
 
 app.use("/api/v1", router);
 app.use("/api/v1/jobs", authenticateUser, jobRouter);

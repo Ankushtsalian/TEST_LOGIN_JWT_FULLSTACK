@@ -6,7 +6,6 @@ const createProduct = async (req, res) => {
 
   try {
     const product = await Product.create(req.body);
-    console.log(product);
     res.status(200).json({ product });
   } catch (error) {
     throw new CustomAPIError(error, 400);
