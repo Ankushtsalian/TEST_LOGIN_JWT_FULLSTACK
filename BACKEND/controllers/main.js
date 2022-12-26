@@ -51,7 +51,7 @@ const login = async (req, res) => {
 
 const deleteUser = async (req, res) => {
   await registerSchema.deleteMany();
-  return res.status("200").json({ msg: "Users  deleted" });
+  return res.status("200").json({ msg: "User  deleted" });
 };
 
 const getAllUsers = async (req, res) => {

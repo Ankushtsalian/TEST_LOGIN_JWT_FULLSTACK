@@ -17,16 +17,16 @@ const JobSchema = new mongoose.Schema(
       enum: ["interview", "declined", "pending"],
       default: "pending",
     },
-    // createdBy: {
-    //   type: mongoose.Types.ObjectId,
-    //   ref: "Registers",
-    //   required: [true, "please provide user"],
-    // },
-    // createdByName: {
-    //   type: String,
-    //   ref: "Registers",
-    //   required: [true, "please provide user"],
-    // },
+    createdBy: {
+      type: mongoose.Types.ObjectId,
+      ref: "Register",
+      required: [true, "please provide user"],
+    },
+    createdByName: {
+      type: String,
+      ref: "Register",
+      required: [true, "please provide user"],
+    },
   },
   { timestamps: true }
 );
