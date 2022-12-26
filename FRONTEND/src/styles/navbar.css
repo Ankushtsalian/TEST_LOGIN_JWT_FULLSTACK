@@ -188,3 +188,24 @@ body.open .burger {
 .dropdown-menu>button:hover {
     opacity: 1;
 }
+
+.profile-container{
+    align-content: center;display: flex;
+    justify-content: center;
+    align-items: center;
+   max-width: 300px;
+}
+.profile-img{
+width: 50px;
+height: 50px;
+border-radius: 55%;
+margin: 10px;
+
+}
+
+.file{
+    visibility: hidden;
+}
+.show{
+    visibility:visible;
+}

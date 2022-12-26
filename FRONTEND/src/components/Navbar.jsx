@@ -3,6 +3,7 @@ import Logout from "./Logout";
 import "../styles/navbar.css";
 import Hamburger from "./Hamburger";
 import chevron from "../Assets/chevron.svg";
+import Profile from "./Profile";
 
 const Navbar = ({ isClosed, setIsClosed }) => {
   // const [isClosed, setIsClosed] = useState(false);
@@ -47,6 +48,7 @@ const Navbar = ({ isClosed, setIsClosed }) => {
           </div>
         </div>
       </div>
+      <Profile />
       <Logout />
     </nav>
   );
