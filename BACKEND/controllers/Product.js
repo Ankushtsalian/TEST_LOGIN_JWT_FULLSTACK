@@ -23,7 +23,7 @@ const uploadProductImage = async (req, res) => {
       "../Assets/uploads" + `${productImage.name}`
     );
     await productImage.mv(imagePath);
-    res.send(imagePath);
+    res.status(200).json({ image: { src: `/uploads/${productImage.name}` } });
   } catch (error) {
     throw new CustomAPIError(error, 400);
   }
