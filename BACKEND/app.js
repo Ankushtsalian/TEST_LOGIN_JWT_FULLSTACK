@@ -1,12 +1,11 @@
 require("dotenv").config();
 require("express-async-errors");
 require("./db/connect");
+const fileUpload = require("express-fileupload");
 const connectDB = require("./db/connect");
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-
-const fileUpload = require("express-fileupload");
 
 var cors = require("cors");
 const authenticateUser = require("./middleware/auth");
@@ -18,9 +17,9 @@ const router = require("./routes/main");
 const jobRouter = require("./routes/JobRoute");
 const productRoutes = require("./routes/Product");
 // middleware
+app.use(fileUpload());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(fileUpload);
 
 app.use("/api/v1", router);
 app.use("/api/v1/jobs", authenticateUser, jobRouter);
