@@ -35,3 +35,34 @@ aside{
 margin-right: 25px;
 
 }
+
+
+.file-form-container .login-form button{
+    width: 100px;
+}
+.file-form-container .login-form .textbox label{
+    left: 0;
+}
+.file-form-container .login-form .textbox{
+    width: 300px !important;
+}
+.file-form-container .login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 100px;
+}
+.file-form-container{
+    margin: 0 auto;
+    max-width: 70%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.file-form-container .login-form .textbox :is(input:focus, input:valid) ~ label {
+    translate: 0px -40px;
+    scale: 0.875;}
+    
