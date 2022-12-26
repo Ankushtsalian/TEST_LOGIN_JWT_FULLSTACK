@@ -15,7 +15,6 @@ const FileInput = () => {
     let formData = new FormData();
     formData = { ...formData, ["image"]: imageFile };
     // formData.append("image", imageFile);
-    console.log(formData);
     try {
       const {
         data: {
@@ -27,7 +26,6 @@ const FileInput = () => {
         },
       });
       imageValue = src;
-      console.log("imageValue", imageValue);
     } catch (error) {
       imageValue = null;
       console.log(error);
