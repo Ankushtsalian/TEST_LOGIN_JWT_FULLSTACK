@@ -16,7 +16,6 @@ const getAllProducts = async (req, res) => {
 };
 const uploadProductImage = async (req, res) => {
   let productImage = req.files.image;
-
   try {
     const imagePath = path.join(
       __dirname,
