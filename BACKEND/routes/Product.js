@@ -12,5 +12,5 @@ const router = express.Router();
 router.route("/").post(createProduct).get(getAllProducts);
 router.route("/uploads").post(uploadProductImageToCloud);
 
-router.route("/:id").delete(deleteProduct);
+router.route("/:id/query").delete(deleteProduct);
 module.exports = router;

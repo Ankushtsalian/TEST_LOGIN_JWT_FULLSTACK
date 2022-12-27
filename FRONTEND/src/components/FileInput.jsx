@@ -6,10 +6,17 @@ const FileInput = () => {
   const [fileFormData, setFileFormData] = useState({
     name: "",
     price: "",
-    image: "",
+    imageDetail: {
+      image: "",
+      public_id: "",
+    },
   });
   const [productList, setProducts] = useState([]);
-  const { name, price, image } = fileFormData;
+  const {
+    name,
+    price,
+    imageDetail: { image, public_id },
+  } = fileFormData;
   let imageValue;
 
   const fetchProducts = async () => {
@@ -33,11 +40,18 @@ const FileInput = () => {
     const imageFile = event.target.files[0];
     let formData = new FormData();
     formData = { ...formData, ["image"]: imageFile };
+    // const {
+    //   name,
+    //   price,
+    //   imageDetail: { image, public_id },
+    // } = fileFormData;
+    // formData = { ...formData, imageDetail: { ["image"]: imageFile } };
     // formData.append("image", imageFile);
     try {
       const {
         data: {
           image: { src },
+          public_id,
         },
       } = await axios.post(`${url}/uploads`, formData, {
         headers: {
@@ -46,7 +60,14 @@ const FileInput = () => {
       });
       imageValue = src;
       alert(imageValue);
-      setFileFormData((data) => ({ ...data, image: imageValue }));
+
+      setFileFormData((data) => ({
+        ...data,
+        imageDetail: {
+          image: imageValue,
+          public_id,
+        },
+      }));
     } catch (error) {
       imageValue = null;
       console.log(error);
@@ -65,12 +86,16 @@ const FileInput = () => {
     } catch (error) {
       console.log(error);
     }
+    console.log(fileFormData);
   };
 
-  const handleDelete = async (e, id) => {
+  const handleDelete = async (e, id, publicId) => {
     e.preventDefault();
+    // console.log("publicId", publicId);
     try {
-      const prod = await axios.delete(`${url}/${id}`);
+      const prod = await axios.delete(
+        `${url}/${id}/query?publicId=${publicId}`
+      );
       alert("Product Deleted");
     } catch (error) {
       console.log(error);
@@ -123,17 +148,18 @@ const FileInput = () => {
       </div>
       <div className="product-img-container">
         {productList.map((product) => {
-          const { name, price, image, _id } = product;
+          const { name, price, image, _id, public_id } = product;
           return (
             <div key={_id} className="product-container">
               <p>name: {name}</p>
               <p>price: {price}</p>
+              <p>Image: {public_id}</p>
               {/* <p>Image: {image}</p> */}
               {/* <img className="product-img" src={`${imgUrl + image}`} /> */}
               <img className="product-img" src={image} />
               <button
                 className="control "
-                onClick={(e) => handleDelete(e, _id)}
+                onClick={(e) => handleDelete(e, _id, public_id)}
               >
                 Delete
               </button>
