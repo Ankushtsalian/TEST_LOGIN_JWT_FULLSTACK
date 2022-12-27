@@ -17,7 +17,7 @@ const router = require("./routes/main");
 const jobRouter = require("./routes/JobRoute");
 const productRoutes = require("./routes/Product");
 // middleware
-app.use(express.static("./Assets"));
+app.use(express.static("./"));
 app.use(fileUpload());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

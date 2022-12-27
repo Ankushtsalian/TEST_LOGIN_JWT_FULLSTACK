@@ -12,7 +12,7 @@ const createProduct = async (req, res) => {
 };
 
 const getAllProducts = async (req, res) => {
-  const products = await Product.find().select("image");
+  const products = await Product.find().select("name price image");
   console.log(products);
   res.status(200).json({ products });
 };
