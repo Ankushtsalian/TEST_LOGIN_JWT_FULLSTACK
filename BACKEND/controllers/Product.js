@@ -17,6 +17,16 @@ const getAllProducts = async (req, res) => {
 };
 const uploadProductImage = async (req, res) => {
   let productImage = req.files.image;
+
+  if (!req.files) throw new CustomAPIError("No file uploaded", 400);
+  if (!productImage.mimetype.startsWith("image"))
+    throw new CustomAPIError("Please Upload image", 400);
+
+  const maxSize = 1000;
+
+  if (!productImage.size > maxSize)
+    throw new CustomAPIError("Please Upload image smaller than 1kb", 400);
+
   try {
     const imagePath = path.join(
       __dirname,
