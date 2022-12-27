@@ -37,7 +37,7 @@ const FileInput = () => {
     return () => {
       console.log("done");
     };
-  }, []);
+  }, [productList]);
 
   const handleFileInput = async (event) => {
     const imageFile = event.target.files[0];
@@ -91,7 +91,8 @@ const FileInput = () => {
 
   const handleDelete = async (e, id, publicId) => {
     e.preventDefault();
-    // console.log("publicId", publicId);
+    setIsLoading(true);
+
     try {
       const prod = await axios.delete(
         `${url}/${id}/query?publicId=${publicId}`
@@ -100,6 +101,7 @@ const FileInput = () => {
     } catch (error) {
       console.log(error);
     }
+    setIsLoading(false);
   };
 
   return (
@@ -138,7 +140,12 @@ const FileInput = () => {
         {isLoading ? (
           <Loader />
         ) : (
-          <Product productList={productList} handleDelete={handleDelete} />
+          <Product
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
+            productList={productList}
+            handleDelete={handleDelete}
+          />
         )}
       </div>
     </>
