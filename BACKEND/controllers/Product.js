@@ -65,7 +65,6 @@ const uploadProductImage = async (req, res) => {
 
 const deleteProduct = async (req, res) => {
   const { publicId } = req.query;
-  console.log(publicId);
   await Product.deleteOne({ _id: req.params.id });
   await cloudinary.uploader.destroy(publicId);
   res.status(200).send();
