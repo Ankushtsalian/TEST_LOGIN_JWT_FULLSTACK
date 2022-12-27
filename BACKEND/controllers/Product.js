@@ -5,6 +5,7 @@ const cloudinary = require("cloudinary").v2;
 
 const createProduct = async (req, res) => {
   try {
+    console.log(req.body);
     const product = await Product.create(req.body);
     res.status(200).json({ product });
   } catch (error) {
@@ -54,7 +55,7 @@ const uploadProductImageToCloud = async (req, res) => {
       folder: "Product-upload",
     }
   );
-  console.log(result);
+  res.status(200).json({ image: { src: result.secure_url } });
 };
 module.exports = {
   createProduct,

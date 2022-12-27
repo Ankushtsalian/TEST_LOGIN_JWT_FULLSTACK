@@ -45,6 +45,7 @@ const FileInput = () => {
         },
       });
       imageValue = src;
+      alert(imageValue);
       setFileFormData((data) => ({ ...data, image: imageValue }));
     } catch (error) {
       imageValue = null;
@@ -128,7 +129,8 @@ const FileInput = () => {
               <p>name: {name}</p>
               <p>price: {price}</p>
               <p>Image: {image}</p>
-              <img className="product-img" src={`${imgUrl + image}`} />
+              {/* <img className="product-img" src={`${imgUrl + image}`} /> */}
+              <img className="product-img" src={image} />
               <button
                 className="control "
                 onClick={(e) => handleDelete(e, _id)}

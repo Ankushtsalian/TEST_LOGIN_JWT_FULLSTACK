@@ -38,7 +38,7 @@ const Register = ({ formInput, handleInput }) => {
               placeholder="Username"
               onChange={handleInput}
             /> */}
-            <div class="textbox">
+            <div className="textbox">
               <input
                 className="input"
                 type="text"
@@ -47,7 +47,10 @@ const Register = ({ formInput, handleInput }) => {
                 onChange={handleInput}
               />
               <label>Username</label>
-              <span class="material-symbols-outlined"> account_circle </span>
+              <span className="material-symbols-outlined">
+                {" "}
+                account_circle{" "}
+              </span>
             </div>
             <Password
               placeholder="Password"

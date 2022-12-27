@@ -76,21 +76,8 @@ const Login = ({ handleInput, formInput, setFormInput }) => {
           <h2>Login</h2>
           <h3>Enter your credentials</h3>
 
-          {/* <input
-              spellCheck="false"
-              className="control"
-              name="loginUsername"
-              type="text"
-              placeholder="Username"
-              onChange={handleInput}
-            />
-            <Password
-              placeholder="Password"
-              name="loginPassword"
-              handleInput={handleInput}
-            /> */}
           <form className="login-form">
-            <div class="textbox">
+            <div className="textbox">
               <input
                 className="input"
                 type="text"
@@ -99,7 +86,7 @@ const Login = ({ handleInput, formInput, setFormInput }) => {
                 onChange={handleInput}
               />
               <label>Name</label>
-              <span class="material-symbols-outlined"> account_circle </span>
+              <span className="material-symbols-outlined">account_circle</span>
             </div>
             <Password
               placeholder="Password"
