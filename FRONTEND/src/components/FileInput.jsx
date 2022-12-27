@@ -61,6 +61,7 @@ const FileInput = () => {
     event.preventDefault();
     try {
       await axios.post(url, fileFormData);
+      alert("Image suceesfully Uploaded");
     } catch (error) {
       console.log(error);
     }
@@ -114,12 +115,15 @@ const FileInput = () => {
         {productList.map((product) => {
           const { name, price, image, _id } = product;
           return (
-            <div key={_id}>
+            <div key={_id} className="product-container">
               <p>name: {name}</p>
               <p>price: {price}</p>
               <p>Image: {image}</p>
               {/* <img src={`${img + image}`} /> */}
               <img className="product-img" src={`${imgUrl + image}`} />
+              <button className="control " type="button">
+                Delete
+              </button>
             </div>
           );
         })}

@@ -27,10 +27,16 @@ const uploadProductImage = async (req, res) => {
 
     await productImage.mv(imagePath);
     res.status(200).json({ image: { src: `/uploads/${productImage.name}` } });
-    // res.status(200).json({ image: { src: `${imagePath}` } });
   } catch (error) {
     throw new CustomAPIError(error, 400);
   }
 };
 
-module.exports = { createProduct, getAllProducts, uploadProductImage };
+const deleteProduct = async (req, res) => {};
+
+module.exports = {
+  createProduct,
+  getAllProducts,
+  uploadProductImage,
+  deleteProduct,
+};
