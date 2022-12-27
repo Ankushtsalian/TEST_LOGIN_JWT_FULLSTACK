@@ -3,6 +3,7 @@ const path = require("path");
 const CustomAPIError = require("../errors/custom-error");
 const cloudinary = require("cloudinary").v2;
 const fs = require("fs");
+/**----------------------------------CREATE PRODUCT------------------------------------ */
 
 const createProduct = async (req, res) => {
   try {
@@ -13,11 +14,15 @@ const createProduct = async (req, res) => {
     throw new CustomAPIError(error, 400);
   }
 };
+/**----------------------------------CREATE PRODUCT------------------------------------ */
+
+/**----------------------------------GET ALL PRODUCT------------------------------------ */
 
 const getAllProducts = async (req, res) => {
   const products = await Product.find().select("name price image");
   res.status(200).json({ products });
 };
+/**----------------------------------GET ALL PRODUCT------------------------------------ */
 
 /**----------------------------------UPLOADED IMAGE TO SERVER------------------------------------ */
 const uploadProductImage = async (req, res) => {
@@ -46,10 +51,14 @@ const uploadProductImage = async (req, res) => {
 };
 /**----------------------------------UPLOADED IMAGE TO SERVER------------------------------------ */
 
+/**----------------------------------DELETE PRODUCT------------------------------------ */
+
 const deleteProduct = async (req, res) => {
   await Product.deleteOne({ _id: req.params.id });
   res.status(200).send();
 };
+
+/**----------------------------------DELETE PRODUCT----------------------------------- */
 
 /**----------------------------------UPLOADED IMAGE TO CLOUD------------------------------------ */
 
