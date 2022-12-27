@@ -1,5 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Product from "./Product";
+import FormRow from "./FormRow";
+import Loader from "./Loader";
 const imgUrl = "http://localhost:5000";
 const url = "http://localhost:5000/api/v1/products";
 const FileInput = () => {
@@ -18,6 +21,7 @@ const FileInput = () => {
     imageDetail: { image, public_id },
   } = fileFormData;
   let imageValue;
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchProducts = async () => {
     try {
@@ -30,7 +34,6 @@ const FileInput = () => {
 
   useEffect(() => {
     fetchProducts();
-
     return () => {
       console.log("done");
     };
@@ -40,14 +43,10 @@ const FileInput = () => {
     const imageFile = event.target.files[0];
     let formData = new FormData();
     formData = { ...formData, ["image"]: imageFile };
-    // const {
-    //   name,
-    //   price,
-    //   imageDetail: { image, public_id },
-    // } = fileFormData;
-    // formData = { ...formData, imageDetail: { ["image"]: imageFile } };
     // formData.append("image", imageFile);
     try {
+      setIsLoading(true);
+
       const {
         data: {
           image: { src },
@@ -72,8 +71,9 @@ const FileInput = () => {
       imageValue = null;
       console.log(error);
     }
+    setIsLoading(false);
   };
-
+  // console.log(isLoading);
   const handleInput = (e) => {
     const { name, value } = e.target;
     setFileFormData((data) => ({ ...data, [name]: value }));
@@ -101,71 +101,45 @@ const FileInput = () => {
       console.log(error);
     }
   };
+
   return (
     <>
       <div className="file-form-container">
         <form className="login-form">
-          <div className="textbox">
-            <input
-              className="input"
-              type="text"
-              required
-              name="name"
-              onChange={handleInput}
-            />
-            <label>Name</label>
-          </div>
-          <div className="textbox">
-            <input
-              className="input"
-              type="text"
-              required
-              name="price"
-              onChange={handleInput}
-            />
-            <label>price</label>
-          </div>
-          <div className="textbox">
-            <input
-              className="input"
-              type="file"
-              required
-              name="image"
-              onChange={handleFileInput}
-            />
-            <label>Image</label>
-          </div>
+          <FormRow
+            name="name"
+            label="Name"
+            onChange={handleInput}
+            type="text"
+          />
+          <FormRow
+            name="price"
+            label="Price"
+            onChange={handleInput}
+            type="text"
+          />
+          <FormRow
+            name="image"
+            label="Image"
+            onChange={handleFileInput}
+            type="file"
+          />
 
-          <button
-            className="control"
-            type="button"
-            //   disabled={!loginUsername || !loginPassword}
-            onClick={handleForm}
-          >
-            Submit
-          </button>
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <button className="control" type="button" onClick={handleForm}>
+              Submit
+            </button>
+          )}
         </form>
       </div>
       <div className="product-img-container">
-        {productList.map((product) => {
-          const { name, price, image, _id, public_id } = product;
-          return (
-            <div key={_id} className="product-container">
-              <p>name: {name}</p>
-              <p>price: {price}</p>
-              <p>Image: {public_id}</p>
-              {/* <p>Image: {image}</p> */}
-              {/* <img className="product-img" src={`${imgUrl + image}`} /> */}
-              <img className="product-img" src={image} />
-              <button
-                className="control "
-                onClick={(e) => handleDelete(e, _id, public_id)}
-              >
-                Delete
-              </button>
-            </div>
-          );
-        })}
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <Product productList={productList} handleDelete={handleDelete} />
+        )}
       </div>
     </>
   );
