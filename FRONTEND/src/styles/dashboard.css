@@ -83,17 +83,18 @@ aside {
     flex-direction: row;
 }
 
-.product-container button{
+.product-container button {
     background-image: url("../Assets/background.svg");
-width: 50%;
-    color:black ;
+    width: 50%;
+    color: black;
 }
-.product-container{
+
+.product-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border: 1px solid black;
-margin:0 30px 5px;
-padding: 0px 20px;
+    margin: 0 30px 5px;
+    padding: 0px 20px;
 }

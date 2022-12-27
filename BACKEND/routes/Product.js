@@ -8,7 +8,8 @@ const {
 // const { getAllUsers } = require("../controllers/main");
 const router = express.Router();
 
-router.route("/").post(createProduct).get(getAllProducts).delete(deleteProduct);
+router.route("/").post(createProduct).get(getAllProducts);
 router.route("/uploads").post(uploadProductImage);
 
+router.route("/:id").delete(deleteProduct);
 module.exports = router;

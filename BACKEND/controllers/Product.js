@@ -5,7 +5,6 @@ const CustomAPIError = require("../errors/custom-error");
 const createProduct = async (req, res) => {
   try {
     const product = await Product.create(req.body);
-    console.log(product);
     res.status(200).json({ product });
   } catch (error) {
     throw new CustomAPIError(error, 400);
@@ -14,7 +13,6 @@ const createProduct = async (req, res) => {
 
 const getAllProducts = async (req, res) => {
   const products = await Product.find().select("name price image");
-  console.log(products);
   res.status(200).json({ products });
 };
 const uploadProductImage = async (req, res) => {
@@ -32,7 +30,14 @@ const uploadProductImage = async (req, res) => {
   }
 };
 
-const deleteProduct = async (req, res) => {};
+const deleteProduct = async (req, res) => {
+  // const prod = await Product.findOne({ _id: req.params.id });
+
+  // console.log(prod);
+  await Product.deleteOne({ _id: req.params.id });
+  res.status(200).send();
+  // res.json({ msg: req.params.id });
+};
 
 module.exports = {
   createProduct,

@@ -33,7 +33,6 @@ const FileInput = () => {
     const imageFile = event.target.files[0];
     let formData = new FormData();
     formData = { ...formData, ["image"]: imageFile };
-    console.log(imageFile);
     // formData.append("image", imageFile);
     try {
       const {
@@ -62,6 +61,16 @@ const FileInput = () => {
     try {
       await axios.post(url, fileFormData);
       alert("Image suceesfully Uploaded");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleDelete = async (e, id) => {
+    e.preventDefault();
+    try {
+      const prod = await axios.delete(`${url}/${id}`);
+      alert("User Deleted");
     } catch (error) {
       console.log(error);
     }
@@ -119,15 +128,17 @@ const FileInput = () => {
               <p>name: {name}</p>
               <p>price: {price}</p>
               <p>Image: {image}</p>
-              {/* <img src={`${img + image}`} /> */}
               <img className="product-img" src={`${imgUrl + image}`} />
-              <button className="control " type="button">
+              <button
+                className="control "
+                onClick={(e) => handleDelete(e, _id)}
+              >
                 Delete
               </button>
             </div>
           );
         })}
-      </div>{" "}
+      </div>
     </>
   );
 };
