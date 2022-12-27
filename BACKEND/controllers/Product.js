@@ -20,15 +20,11 @@ const getAllProducts = async (req, res) => {
 const uploadProductImage = async (req, res) => {
   let productImage = req.files.image;
   try {
-    // const date = new Date().getTime();
-    // console.log("Date", date);
     const imagePath = path.join(
       __dirname,
       "../Assets/uploads/" + `${productImage.name}`
     );
-    // console.log("imagePath", imagePath);
-    // console.log("productImage", productImage);
-    // console.log("productImage.name", productImage.name);
+
     await productImage.mv(imagePath);
     res.status(200).json({ image: { src: `/uploads/${productImage.name}` } });
     // res.status(200).json({ image: { src: `${imagePath}` } });

@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-// import img from "../../../BACKEND/Assets/";
-const img = "/api/v1/products";
+const imgUrl = "http://localhost:5000";
 const url = "http://localhost:5000/api/v1/products";
 const FileInput = () => {
   const [fileFormData, setFileFormData] = useState({
@@ -118,7 +117,8 @@ const FileInput = () => {
             <p>name: {name}</p>
             <p>price: {price}</p>
             <p>Image: {image}</p>
-            <img src={`${img + image}`} />
+            {/* <img src={`${img + image}`} /> */}
+            <img src={`${imgUrl + image}`} />
           </div>
         );
       })}

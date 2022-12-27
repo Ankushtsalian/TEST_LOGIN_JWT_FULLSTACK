@@ -35,10 +35,12 @@ button {
     justify-content: space-between;
     align-items: stretch;
     height: 72px;
-    background: transparent;
+    /* background: transparent; */
     animation: rotate 1.5s infinite alternate linear;
     color: #fff !important;
     border-bottom: 1px solid #000;
+    background-image: url("../Assets/background.svg");
+
 }
 
 .burger {
