@@ -26,13 +26,16 @@ const FileInput = () => {
         },
       });
       imageValue = src;
+      setFileFormData((data) => ({ ...data, image: imageValue }));
     } catch (error) {
       imageValue = null;
       console.log(error);
     }
   };
 
-  const handleForm = (event) => {};
+  const handleForm = (event) => {
+    console.log(fileFormData);
+  };
   return (
     <div className="file-form-container">
       <form className="login-form">

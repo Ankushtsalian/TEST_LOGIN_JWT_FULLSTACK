@@ -12,7 +12,9 @@ const createProduct = async (req, res) => {
 };
 
 const getAllProducts = async (req, res) => {
-  res.send("Hello");
+  const products = await Product.find().select("image");
+  console.log(products);
+  res.status(200).json({ products });
 };
 const uploadProductImage = async (req, res) => {
   let productImage = req.files.image;
