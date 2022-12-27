@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+// import img from "../../../BACKEND/Assets/";
+const img = "/api/v1/products";
 const url = "http://localhost:5000/api/v1/products";
 const FileInput = () => {
   const [fileFormData, setFileFormData] = useState({
@@ -32,6 +34,7 @@ const FileInput = () => {
     const imageFile = event.target.files[0];
     let formData = new FormData();
     formData = { ...formData, ["image"]: imageFile };
+    console.log(imageFile);
     // formData.append("image", imageFile);
     try {
       const {
@@ -115,7 +118,7 @@ const FileInput = () => {
             <p>name: {name}</p>
             <p>price: {price}</p>
             <p>Image: {image}</p>
-            <img src={` ${image}`} />
+            <img src={`${img + image}`} />
           </div>
         );
       })}
