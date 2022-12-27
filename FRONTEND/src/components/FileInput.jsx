@@ -71,7 +71,7 @@ const FileInput = () => {
     e.preventDefault();
     try {
       const prod = await axios.delete(`${url}/${id}`);
-      alert("User Deleted");
+      alert("Product Deleted");
     } catch (error) {
       console.log(error);
     }
@@ -128,7 +128,7 @@ const FileInput = () => {
             <div key={_id} className="product-container">
               <p>name: {name}</p>
               <p>price: {price}</p>
-              <p>Image: {image}</p>
+              {/* <p>Image: {image}</p> */}
               {/* <img className="product-img" src={`${imgUrl + image}`} /> */}
               <img className="product-img" src={image} />
               <button

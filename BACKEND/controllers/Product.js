@@ -2,6 +2,7 @@ const Product = require("../model/Product");
 const path = require("path");
 const CustomAPIError = require("../errors/custom-error");
 const cloudinary = require("cloudinary").v2;
+const fs = require("fs");
 
 const createProduct = async (req, res) => {
   try {
@@ -60,6 +61,9 @@ const uploadProductImageToCloud = async (req, res) => {
       folder: "Product-upload",
     }
   );
+
+  fs.unlinkSync(req.files.image.tempFilePath);
+
   res.status(200).json({ image: { src: result.secure_url } });
 };
 /**----------------------------------UPLOADED IMAGE TO CLOUD------------------------------------ */

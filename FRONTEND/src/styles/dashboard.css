@@ -81,6 +81,8 @@ aside {
 .product-img-container {
     display: flex;
     flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 .product-container button {
