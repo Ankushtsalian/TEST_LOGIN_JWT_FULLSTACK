@@ -22,7 +22,7 @@ const uploadProductImage = async (req, res) => {
   if (!productImage.mimetype.startsWith("image"))
     throw new CustomAPIError("Please Upload image", 400);
 
-  const maxSize = 1000;
+  const maxSize = 1024 * 1024;
 
   if (!productImage.size > maxSize)
     throw new CustomAPIError("Please Upload image smaller than 1kb", 400);
