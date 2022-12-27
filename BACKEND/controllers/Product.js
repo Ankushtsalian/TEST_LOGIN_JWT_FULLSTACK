@@ -17,6 +17,8 @@ const getAllProducts = async (req, res) => {
   const products = await Product.find().select("name price image");
   res.status(200).json({ products });
 };
+
+/**----------------------------------UPLOADED IMAGE TO SERVER------------------------------------ */
 const uploadProductImage = async (req, res) => {
   let productImage = req.files.image;
 
@@ -41,11 +43,14 @@ const uploadProductImage = async (req, res) => {
     throw new CustomAPIError(error, 400);
   }
 };
+/**----------------------------------UPLOADED IMAGE TO SERVER------------------------------------ */
 
 const deleteProduct = async (req, res) => {
   await Product.deleteOne({ _id: req.params.id });
   res.status(200).send();
 };
+
+/**----------------------------------UPLOADED IMAGE TO CLOUD------------------------------------ */
 
 const uploadProductImageToCloud = async (req, res) => {
   const result = await cloudinary.uploader.upload(
@@ -57,6 +62,8 @@ const uploadProductImageToCloud = async (req, res) => {
   );
   res.status(200).json({ image: { src: result.secure_url } });
 };
+/**----------------------------------UPLOADED IMAGE TO CLOUD------------------------------------ */
+
 module.exports = {
   createProduct,
   getAllProducts,
