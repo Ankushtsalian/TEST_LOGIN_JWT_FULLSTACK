@@ -1,6 +1,7 @@
 const Product = require("../model/Product");
 const path = require("path");
 const CustomAPIError = require("../errors/custom-error");
+const cloudinary = require("cloudinary").v2;
 
 const createProduct = async (req, res) => {
   try {
@@ -41,17 +42,23 @@ const uploadProductImage = async (req, res) => {
 };
 
 const deleteProduct = async (req, res) => {
-  // const prod = await Product.findOne({ _id: req.params.id });
-
-  // console.log(prod);
   await Product.deleteOne({ _id: req.params.id });
   res.status(200).send();
-  // res.json({ msg: req.params.id });
 };
 
+const uploadProductImageToCloud = async (req, res) => {
+  const result = await cloudinary.uploader.upload(
+    req.files.image.tempFilePath,
+    {
+      use_filename: true,
+      folder: "Product-upload",
+    }
+  );
+  console.log(result);
+};
 module.exports = {
   createProduct,
   getAllProducts,
-  uploadProductImage,
+  uploadProductImageToCloud,
   deleteProduct,
 };

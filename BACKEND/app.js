@@ -29,7 +29,7 @@ const jobRouter = require("./routes/JobRoute");
 const productRoutes = require("./routes/Product");
 // middleware
 app.use(express.static("./Assets"));
-app.use(fileUpload());
+app.use(fileUpload({ useTempFiles: true }));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
