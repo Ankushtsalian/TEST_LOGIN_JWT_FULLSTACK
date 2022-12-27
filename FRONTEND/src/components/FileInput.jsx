@@ -110,18 +110,20 @@ const FileInput = () => {
           </button>
         </form>
       </div>
-      {productList.map((product) => {
-        const { name, price, image, _id } = product;
-        return (
-          <div key={_id}>
-            <p>name: {name}</p>
-            <p>price: {price}</p>
-            <p>Image: {image}</p>
-            {/* <img src={`${img + image}`} /> */}
-            <img src={`${imgUrl + image}`} />
-          </div>
-        );
-      })}
+      <div className="product-img-container">
+        {productList.map((product) => {
+          const { name, price, image, _id } = product;
+          return (
+            <div key={_id}>
+              <p>name: {name}</p>
+              <p>price: {price}</p>
+              <p>Image: {image}</p>
+              {/* <img src={`${img + image}`} /> */}
+              <img className="product-img" src={`${imgUrl + image}`} />
+            </div>
+          );
+        })}
+      </div>{" "}
     </>
   );
 };

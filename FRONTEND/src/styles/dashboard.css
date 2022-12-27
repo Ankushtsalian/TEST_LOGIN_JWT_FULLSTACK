@@ -11,6 +11,7 @@
     grid-template-columns: 1fr 7fr;
     position: relative;
     top: 4.5rem;
+    /* min-height: 150vh; */
 
 }
 .main{
@@ -51,12 +52,11 @@ margin-right: 25px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 100px;
+    margin:20PX 70px;
 }
 .file-form-container{
     margin: 0 auto;
     max-width: 70%;
-    height: 70%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,3 +66,12 @@ margin-right: 25px;
     translate: 0px -40px;
     scale: 0.875;}
     
+
+    .product-img{
+        width: 150px;
+height: 150px;
+margin: 10px;
+    }
+    .product-img-container{
+        display: flex;flex-direction: row;
+    }
