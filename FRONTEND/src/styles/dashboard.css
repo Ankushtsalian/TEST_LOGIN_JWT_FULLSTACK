@@ -87,11 +87,15 @@ pre {
 }
 
 
+.product-img:hover {      width: 350px;
+    height: 300px;}
 .product-img {
+ 
     width: 250px;
     height: 200px;
-    margin: 50px;
+    margin: 20px 20px 30px;
     transition: all 0.85s;
+    object-fit: fill;
 
 }
 
@@ -108,18 +112,28 @@ pre {
 
 .product-container button {
     background-image: url("../Assets/background.svg");
-    width: 50%;
+    width: 65%;
     color: black;
 }
 
+.product-container:hover {
+    box-shadow: 0 0 5px 2px #fff;
+    border-color: #fff;
+    min-width: 30%;
+    min-height: 15%;
+    
+
+
+}
 .product-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    transition: all 0.85s;
-min-width: 500px;
-min-height: 500px;
+    transition: all 0.35s;
+min-width: 15%;
+min-height: 25%;
     align-items: center;
     border: 1px solid black;
-    margin: 0 30px 5px;
+    margin: 15px 30px 35px;
+    padding: 0 10px 20px;
 }

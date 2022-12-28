@@ -85,7 +85,7 @@ const FileInput = () => {
       alert("Image suceesfully Uploaded");
       fetchProducts();
     } catch (error) {
-      console.log(error);
+      alert(error.response.data.msg);
     }
   };
 
