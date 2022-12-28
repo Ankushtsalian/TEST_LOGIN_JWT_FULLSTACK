@@ -13,8 +13,8 @@ const Loader = () => {
 
   return (
     <>
-      <div id="loader" class="loading">
-        <span class="loader"></span>
+      <div id="loader" className="loading">
+        <span className="loader"></span>
       </div>
     </>
   );

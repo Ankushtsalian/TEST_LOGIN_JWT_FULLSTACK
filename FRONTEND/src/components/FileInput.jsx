@@ -37,7 +37,7 @@ const FileInput = () => {
     return () => {
       console.log("done");
     };
-  }, [productList]);
+  }, []);
 
   const handleFileInput = async (event) => {
     const imageFile = event.target.files[0];
@@ -73,7 +73,7 @@ const FileInput = () => {
     }
     setIsLoading(false);
   };
-  // console.log(isLoading);
+
   const handleInput = (e) => {
     const { name, value } = e.target;
     setFileFormData((data) => ({ ...data, [name]: value }));
@@ -83,6 +83,7 @@ const FileInput = () => {
     try {
       await axios.post(url, fileFormData);
       alert("Image suceesfully Uploaded");
+      fetchProducts();
     } catch (error) {
       console.log(error);
     }
@@ -94,10 +95,9 @@ const FileInput = () => {
     setIsLoading(true);
 
     try {
-      const prod = await axios.delete(
-        `${url}/${id}/query?publicId=${publicId}`
-      );
+      await axios.delete(`${url}/${id}/query?publicId=${publicId}`);
       alert("Product Deleted");
+      fetchProducts();
     } catch (error) {
       console.log(error);
     }
