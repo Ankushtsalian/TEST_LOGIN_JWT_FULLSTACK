@@ -1,15 +1,22 @@
 
 .sidebarShow {
   left: 0;
+  border: 1px solid black;
+
+  /* width: 300px !important; */
+  /* visibility: hidden; */
+     transition: all 0.85s;
 }
 
 .sidebarClose {
   left: -100vh;
+  width: 0;
+       transition: all 0.85s;
+  height: 0;
 }
 .svg{
  display: flex;
- /* justify-content: center;
- align-items: center; */
+
 
 
 }

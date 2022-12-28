@@ -3,7 +3,17 @@
     justify-content: center;align-items: center;
 } */
 
-.main-container {
+.main-container-hide {
+    grid-template-columns: 1fr 7fr;
+    display: grid;
+
+    transition: all 0.85s;
+    position: relative;
+    top: 4.5rem;
+}
+
+.main-container-show {
+    transition: all 0.85s;
 
     display: grid;
     grid-template-columns: 1fr 7fr;
@@ -13,9 +23,14 @@
 
 }
 
+
 .main {
-    border: 1px solid black;
     margin: 0 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.85s;
 
 
 }
@@ -27,14 +42,8 @@ pre {
 
 }
 
-aside {
-    position: relative;
-    top: 0;
-    width: 300px;
 
-    margin-right: 25px;
 
-}
 
 
 .file-form-container .login-form button {
@@ -79,16 +88,22 @@ aside {
 
 
 .product-img {
-    width: 150px;
-    height: 150px;
-    margin: 10px;
+    width: 250px;
+    height: 200px;
+    margin: 50px;
+    transition: all 0.85s;
+
 }
 
 .product-img-container {
     display: flex;
-    flex-direction: row;
-    width: 110%;
+    /* flex-direction: column; */
+    justify-content: center;
+
+    align-items: center;
     flex-wrap: wrap;
+    transition: all 0.85s;
+
 }
 
 .product-container button {
@@ -101,6 +116,8 @@ aside {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    transition: all 0.85s;
+
     align-items: center;
     border: 1px solid black;
     margin: 0 30px 5px;

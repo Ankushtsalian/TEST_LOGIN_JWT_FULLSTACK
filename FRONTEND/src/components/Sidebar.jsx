@@ -6,8 +6,8 @@ import NavMenu from "./NavMenu";
 const Sidebar = ({ isClosed }) => {
   return (
     <div
-      className={`${isClosed ? "sidebar sidebarShow" : "sidebar  sidebarClose"}
-    `}
+    // className={`${isClosed ? "sidebar sidebarShow" : "sidebar  sidebarClose"}
+    // `}
     >
       <ul>
         {menuItems.map((item, i) => (

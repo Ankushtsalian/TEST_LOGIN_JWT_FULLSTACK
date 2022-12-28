@@ -87,7 +87,6 @@ const FileInput = () => {
     } catch (error) {
       console.log(error);
     }
-    console.log(fileFormData);
   };
 
   const handleDelete = async (e, id, publicId) => {

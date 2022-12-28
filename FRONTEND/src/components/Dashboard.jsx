@@ -7,8 +7,16 @@ import Loader from "./Loader";
 
 const Dashboard = ({ isClosed }) => {
   return (
-    <div className="main-container">
-      <aside>
+    <div
+      className={`${!isClosed ? "main-container-hide" : "main-container-show"}
+  `}
+    >
+      <aside
+        //     className={`${isClosed ? "asideHide" : "asideShow"}
+        // `}
+        className={`${isClosed ? "sidebar sidebarShow" : "sidebarClose"}
+      `}
+      >
         <Sidebar isClosed={isClosed} />
       </aside>
       <div className="main">

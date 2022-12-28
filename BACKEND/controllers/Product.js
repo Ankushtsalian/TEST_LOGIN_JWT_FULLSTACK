@@ -36,24 +36,15 @@ const getAllProducts = async (req, res) => {
   let map = {};
 
   let combined = [...dbImages, ...productImageId];
-  console.log(
-    { dbImages: dbImages.length },
-    { productImageIdLength: productImageId.length }
-  );
-  console.log({ combined });
 
   productImageId = productImageId.map((image) => image.public_id);
-  console.log("productImageId : ", productImageId);
 
   combined.forEach((image) => (map[image.public_id] = image.public_id));
   combinedProductId = Object.values(map);
-  console.log("combinedProductId : ", combinedProductId);
 
   const FileterdimagesId = combinedProductId.filter(
     (image) => !productImageId.includes(image)
   );
-
-  console.log("FileterdimagesId : ", FileterdimagesId);
 
   FileterdimagesId.forEach(async (publicId) => {
     await cloudinary.uploader.destroy(publicId);
