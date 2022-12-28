@@ -31,20 +31,35 @@ const createProduct = async (req, res) => {
 const getAllProducts = async (req, res) => {
   const products = await Product.find().select("name price image  public_id");
 
-  let images = await Image.find().select("public_id");
+  let dbImages = await Image.find().select("public_id");
   let productImageId = await Product.find().select("public_id");
+  let map = {};
+
+  let combined = [...dbImages, ...productImageId];
+  console.log(
+    { dbImages: dbImages.length },
+    { productImageIdLength: productImageId.length }
+  );
+  console.log({ combined });
 
   productImageId = productImageId.map((image) => image.public_id);
-  imagesId = images.map((image) => image.public_id);
+  console.log("productImageId : ", productImageId);
 
-  const FileterdimagesId = imagesId.filter(
+  combined.forEach((image) => (map[image.public_id] = image.public_id));
+  combinedProductId = Object.values(map);
+  console.log("combinedProductId : ", combinedProductId);
+
+  const FileterdimagesId = combinedProductId.filter(
     (image) => !productImageId.includes(image)
   );
+
+  console.log("FileterdimagesId : ", FileterdimagesId);
 
   FileterdimagesId.forEach(async (publicId) => {
     await cloudinary.uploader.destroy(publicId);
     await Image.deleteOne({ public_id: publicId });
   });
+
   res.status(200).json({ products });
 };
 /**----------------------------------GET ALL PRODUCT------------------------------------ */
