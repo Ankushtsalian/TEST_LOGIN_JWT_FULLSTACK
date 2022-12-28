@@ -7,12 +7,20 @@ const Product = ({ productList, handleDelete }) => {
         const { name, price, image, _id, public_id } = product;
         return (
           <div key={_id} className="product-container">
-            <p>name: {name}</p>
-            <p>price: {price}</p>
-            <p>Image: {public_id}</p>
-            {/* <p>Image: {image}</p> */}
-            {/* <img className="product-img" src={`${imgUrl + image}`} /> */}
-            <img className="product-img" src={image} />
+            <div style={{ alignContent: "left" }}>
+              <p>name: {name}</p>
+              <p>price: {price}</p>
+              <p>Image: {public_id}</p>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img className="product-img" src={image} />
+              </div>
+            </div>
             <button
               className="control "
               onClick={(e) => handleDelete(e, _id, public_id)}
