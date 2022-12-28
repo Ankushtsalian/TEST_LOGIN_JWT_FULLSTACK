@@ -1,7 +1,6 @@
 
 .sidebarShow {
   left: 0;
-  border: 1px solid black;
 
   /* width: 300px !important; */
   /* visibility: hidden; */
@@ -70,6 +69,10 @@
 
 
 }
+.sidebar-container{
+  border: 1px solid black;
+}
+
  
 ul{
  margin: 0;

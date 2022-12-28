@@ -119,13 +119,16 @@ const FileInput = () => {
             onChange={handleInput}
             type="text"
           />
-          <FormRow
-            name="image"
-            label="Image"
-            onChange={handleFileInput}
-            type="file"
-          />
 
+          <div className="textbox-container">
+            <input
+              className="input"
+              type="file"
+              required
+              name="image"
+              onChange={handleFileInput}
+            />
+          </div>
           {isLoading ? (
             <Loader />
           ) : (
