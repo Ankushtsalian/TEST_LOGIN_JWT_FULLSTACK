@@ -1,4 +1,5 @@
 const Product = require("../model/Product");
+const Image = require("../model/Image");
 const path = require("path");
 const CustomAPIError = require("../errors/custom-error");
 const cloudinary = require("cloudinary").v2;
@@ -12,7 +13,6 @@ const createProduct = async (req, res) => {
     imageDetail: { image, public_id },
   } = req.body;
   try {
-    console.log(req.body);
     const product = await Product.create({
       name,
       price,
@@ -30,6 +30,21 @@ const createProduct = async (req, res) => {
 
 const getAllProducts = async (req, res) => {
   const products = await Product.find().select("name price image  public_id");
+
+  let images = await Image.find().select("public_id");
+  let productImageId = await Product.find().select("public_id");
+
+  productImageId = productImageId.map((image) => image.public_id);
+  imagesId = images.map((image) => image.public_id);
+
+  const FileterdimagesId = imagesId.filter(
+    (image) => !productImageId.includes(image)
+  );
+
+  FileterdimagesId.forEach(async (publicId) => {
+    await cloudinary.uploader.destroy(publicId);
+    await Image.deleteOne({ public_id: publicId });
+  });
   res.status(200).json({ products });
 };
 /**----------------------------------GET ALL PRODUCT------------------------------------ */
@@ -66,6 +81,7 @@ const uploadProductImage = async (req, res) => {
 const deleteProduct = async (req, res) => {
   const { publicId } = req.query;
   await Product.deleteOne({ _id: req.params.id });
+  await Image.deleteOne({ public_id: publicId });
   await cloudinary.uploader.destroy(publicId);
   res.status(200).send();
 };
@@ -82,7 +98,7 @@ const uploadProductImageToCloud = async (req, res) => {
       folder: "Product-upload",
     }
   );
-
+  await Image.create({ public_id: result.public_id });
   fs.unlinkSync(req.files.image.tempFilePath);
 
   res.status(200).json({
