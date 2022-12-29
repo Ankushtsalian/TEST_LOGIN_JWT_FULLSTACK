@@ -50,14 +50,15 @@ const getAllProducts = async (req, res) => {
     (image) => !productImageId.includes(image)
   );
 
-  FileterdimagesId.forEach(async (publicId) => {
-    await cloudinary.uploader.destroy(publicId);
-    await Image.deleteOne({ public_id: publicId });
+  [...FileterdimagesId, ...profileId].forEach(async (publicId) => {
+    await cloudinary?.uploader.destroy(publicId);
+    await Image?.deleteOne({ public_id: publicId });
+    await Profile?.deleteOne({ public_id: publicId });
   });
-  profileId.forEach(async (publicId) => {
-    await cloudinary.uploader.destroy(publicId);
-    await Profile.deleteOne({ public_id: publicId });
-  });
+  // profileId.forEach(async (publicId) => {
+  //   await cloudinary.uploader.destroy(publicId);
+  //   await Profile.deleteOne({ public_id: publicId });
+  // });
 
   res.status(200).json({ products });
 };
