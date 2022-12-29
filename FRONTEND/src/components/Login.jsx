@@ -15,7 +15,9 @@ const Login = ({ handleInput, formInput, setFormInput }) => {
   // console.log(tokenDecoded);
   useEffect(() => {
     localStorage.removeItem("Token");
-  });
+    localStorage.removeItem("profile");
+    return console.log("done login");
+  }, []);
 
   const handleLogin = async () => {
     try {
@@ -50,7 +52,7 @@ const Login = ({ handleInput, formInput, setFormInput }) => {
 
       setTimeout(() => {
         alert(
-          `Login Successfull with username : ${response.data.msg.decoded.username}`
+          `Login Successfull with username : ${response.data.msg.username}`
         );
       }, 250);
     } catch (error) {

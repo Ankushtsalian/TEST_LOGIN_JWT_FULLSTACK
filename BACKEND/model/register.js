@@ -30,7 +30,6 @@ registerSchema.methods.createJWT = function () {
       expiresIn: "30d",
     }
   );
-  console.log(this._id);
   return userToken;
 };
 

@@ -14,7 +14,6 @@ const createJob = async (req, res) => {
     createdByName: req.user.username,
   });
   // throw new CustomAPIError("Please provide email and password", 400);
-  console.log(job);
 
   return res.send(`Job created with JobId ${job._id}`);
 };

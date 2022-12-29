@@ -1,14 +1,35 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import img from "../Assets/profile.png";
 const url = "http://localhost:5000/api/v1/products";
-// let imageValue;
+let user;
 
 const Profile = () => {
   const [uploaded, setUploaded] = useState(false);
   let [imageValue, setimageValue] = useState(localStorage.getItem("profile"));
+  const fetchProfile = async () => {
+    try {
+      const products = await axios.get(url, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${localStorage.getItem("Token")}`,
+        },
+      });
+      console.log(products.data.src);
+      user = products.data.user;
+      setimageValue(products.data.src);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
+  useEffect(() => {
+    fetchProfile();
+    return () => {
+      console.log("done");
+    };
+  }, []);
   const handleFileInput = async (event) => {
     const imageFile = event.target.files[0];
     console.log(event.target.files);
@@ -38,6 +59,7 @@ const Profile = () => {
     }
     // setIsLoading(false);
   };
+
   return (
     <div className="profile-container">
       <input
@@ -48,6 +70,7 @@ const Profile = () => {
       <div onClick={() => setUploaded(!uploaded)}>
         <img className="profile-img" src={imageValue} />
       </div>
+      <p title={user}>Welcome {String(user).split(" ")[0]}</p>
     </div>
   );
 };

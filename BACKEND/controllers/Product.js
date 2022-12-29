@@ -34,9 +34,19 @@ const getAllProducts = async (req, res) => {
 
   let dbImages = await Image.find().select("public_id");
   let productImageId = await Product.find().select("public_id");
-  const profiles = await Profile.find().select("public_id");
-  let profileId = profiles.map((profile) => profile.public_id);
+  const profiles = await Profile.find({
+    createdBy: String(req.user.userId),
+  }).select("public_id src");
+  let profileId = [];
+  let src = [];
+
+  profiles.forEach((profile) => {
+    profileId.push(profile.public_id);
+    src.push(profile.src);
+  });
+  // let profileId = profiles.map((profile) => profile.public_id);
   profileId = profileId.slice(0, profileId.length - 1);
+  src = src.slice(profileId.length);
   let map = {};
 
   let combined = [...dbImages, ...productImageId];
@@ -55,12 +65,8 @@ const getAllProducts = async (req, res) => {
     await Image?.deleteOne({ public_id: publicId });
     await Profile?.deleteOne({ public_id: publicId });
   });
-  // profileId.forEach(async (publicId) => {
-  //   await cloudinary.uploader.destroy(publicId);
-  //   await Profile.deleteOne({ public_id: publicId });
-  // });
 
-  res.status(200).json({ products });
+  res.status(200).json({ products, src, user: req.user.username });
 };
 /**----------------------------------GET ALL PRODUCT------------------------------------ */
 
@@ -129,15 +135,10 @@ const uploadProfileImageToCloud = async (req, res) => {
       folder: "Profile-Upload",
     }
   );
-  // const profiles = await Profile.find().select("public_id");
-  // const profileId = profiles.map((profile) => profile.public_id);
-  // const profileIdResult = profileId.filter((profile) =>
-  //   profile.includes(result.public_id)
-  // );
 
-  // console.log(profileIdResult);
   await Profile.create({
     public_id: result.public_id,
+    src: result.secure_url,
     createdBy: req.user.userId,
     createdByName: req.user.username,
   });

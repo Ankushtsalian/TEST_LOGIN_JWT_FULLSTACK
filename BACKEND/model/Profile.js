@@ -6,6 +6,11 @@ const ProfileImageSchema = new mongoose.Schema(
       type: String,
       required: [true, "please provide public_id"],
     },
+    src: {
+      type: String,
+      required: [true, "please provide public_id"],
+    },
+
     createdBy: {
       type: mongoose.Types.ObjectId,
       ref: "Register",

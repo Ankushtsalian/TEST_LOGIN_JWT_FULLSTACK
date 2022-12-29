@@ -9,6 +9,7 @@ const Logout = () => {
   const navigate = useNavigate();
   const handleLogout = () => {
     setLogToken(localStorage.removeItem("Token"));
+    setLogToken(localStorage.removeItem("profile"));
   };
 
   useEffect(() => {

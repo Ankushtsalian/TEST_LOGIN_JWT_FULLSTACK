@@ -21,6 +21,7 @@ const FileInput = () => {
     imageDetail: { image, public_id },
   } = fileFormData;
   let imageValue;
+  let src;
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchProducts = async () => {
@@ -31,6 +32,7 @@ const FileInput = () => {
           Authorization: `Bearer ${localStorage.getItem("Token")}`,
         },
       });
+      src = products.data.src;
       setProducts(products.data.products);
     } catch (error) {
       console.log(error);
@@ -161,6 +163,7 @@ const FileInput = () => {
             setIsLoading={setIsLoading}
             productList={productList}
             handleDelete={handleDelete}
+            src={src}
           />
         )}
       </div>

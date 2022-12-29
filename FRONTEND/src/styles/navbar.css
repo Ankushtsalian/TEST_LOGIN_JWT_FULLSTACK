@@ -39,9 +39,9 @@ button {
     animation: rotate 1.5s infinite alternate linear;
     color: #fff !important;
     border-bottom: 1px solid #000;
-    /* background-image: url("../Assets/background.svg"); */
-    --tw-bg-opacity: 1;
-    background-color: rgb(30 41 59/var(--tw-bg-opacity));
+    background-image: url("../Assets/background.svg");
+    /* --tw-bg-opacity: 1;
+    background-color: rgb(30 41 59/var(--tw-bg-opacity)); */
 
 }
 
@@ -155,9 +155,11 @@ body.open .burger {
         padding: 6px 24px 10px;
         margin-bottom: 0;
         place-items: start;
-
+        --tw-bg-opacity: 1;
+        background-color: rgb(30 41 59/var(--tw-bg-opacity));
+        border: 1px solid #fff;
         /* color: gold !important; */
-        background-image: url("../Assets/background.svg");
+        /* background-image: url("../Assets/background.svg"); */
         opacity: 0;
         visibility: hidden;
         translate: 0 24px;
@@ -193,17 +195,22 @@ body.open .burger {
     opacity: 1;
 }
 
+.profile-container p{ min-width: 70px}
 .profile-container{
     align-content: center;display: flex;
     justify-content: center;
     align-items: center;
    max-width: 300px;
+margin: 20px;
+cursor: pointer;
+
 }
 .profile-img{
 width: 50px;
 height: 50px;
 border-radius: 55%;
-margin: 10px;
+margin: 20px;
+object-fit: fill;
 
 }
 

@@ -35,8 +35,7 @@ const login = async (req, res) => {
   if (!isPasswordCorrect) throw new CustomAPIError("invalid Credentials", 401);
 
   const token = user.createJWT();
-
-  return res.status("200").json({ msg: { username: user.name, token } });
+  return res.status("200").json({ msg: { username: user.username, token } });
 
   // const [{ token }] = findUser;
 
