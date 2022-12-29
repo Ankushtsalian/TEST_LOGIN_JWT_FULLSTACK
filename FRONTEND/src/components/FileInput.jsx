@@ -25,7 +25,12 @@ const FileInput = () => {
 
   const fetchProducts = async () => {
     try {
-      const products = await axios.get(url);
+      const products = await axios.get(url, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${localStorage.getItem("Token")}`,
+        },
+      });
       setProducts(products.data.products);
     } catch (error) {
       console.log(error);
@@ -55,6 +60,7 @@ const FileInput = () => {
       } = await axios.post(`${url}/uploads`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${localStorage.getItem("Token")}`,
         },
       });
       imageValue = src;
@@ -81,7 +87,11 @@ const FileInput = () => {
   const handleForm = async (event) => {
     event.preventDefault();
     try {
-      await axios.post(url, fileFormData);
+      await axios.post(url, fileFormData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("Token")}`,
+        },
+      });
       alert("Image suceesfully Uploaded");
       fetchProducts();
     } catch (error) {
@@ -94,7 +104,11 @@ const FileInput = () => {
     setIsLoading(true);
 
     try {
-      await axios.delete(`${url}/${id}/query?publicId=${publicId}`);
+      await axios.delete(`${url}/${id}/query?publicId=${publicId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("Token")}`,
+        },
+      });
       alert("Product Deleted");
       fetchProducts();
     } catch (error) {

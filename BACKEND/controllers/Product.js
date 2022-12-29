@@ -1,5 +1,6 @@
 const Product = require("../model/Product");
 const Image = require("../model/Image");
+const Profile = require("../model/Profile");
 const path = require("path");
 const CustomAPIError = require("../errors/custom-error");
 const cloudinary = require("cloudinary").v2;
@@ -112,6 +113,26 @@ const uploadProductImageToCloud = async (req, res) => {
     public_id: result.public_id,
   });
 };
+const uploadProfileImageToCloud = async (req, res) => {
+  const result = await cloudinary.uploader.upload(
+    req.files.image.tempFilePath,
+    {
+      use_filename: true,
+      folder: "Profile-Upload",
+    }
+  );
+  await Profile.create({
+    public_id: result.public_id,
+    createdBy: req.user.userId,
+    createdByName: req.user.username,
+  });
+  fs.unlinkSync(req.files.image.tempFilePath);
+
+  res.status(200).json({
+    image: { src: result.secure_url },
+    public_id: result.public_id,
+  });
+};
 /**----------------------------------UPLOADED IMAGE TO CLOUD------------------------------------ */
 
 module.exports = {
@@ -119,4 +140,5 @@ module.exports = {
   getAllProducts,
   uploadProductImageToCloud,
   deleteProduct,
+  uploadProfileImageToCloud,
 };

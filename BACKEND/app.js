@@ -35,7 +35,7 @@ app.use(express.json());
 
 app.use("/api/v1", router);
 app.use("/api/v1/jobs", authenticateUser, jobRouter);
-app.use("/api/v1/products", productRoutes);
+app.use("/api/v1/products", authenticateUser, productRoutes);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
