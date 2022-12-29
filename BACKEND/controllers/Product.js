@@ -34,6 +34,9 @@ const getAllProducts = async (req, res) => {
 
   let dbImages = await Image.find().select("public_id");
   let productImageId = await Product.find().select("public_id");
+  const profiles = await Profile.find().select("public_id");
+  let profileId = profiles.map((profile) => profile.public_id);
+  profileId = profileId.slice(0, profileId.length - 1);
   let map = {};
 
   let combined = [...dbImages, ...productImageId];
@@ -50,6 +53,10 @@ const getAllProducts = async (req, res) => {
   FileterdimagesId.forEach(async (publicId) => {
     await cloudinary.uploader.destroy(publicId);
     await Image.deleteOne({ public_id: publicId });
+  });
+  profileId.forEach(async (publicId) => {
+    await cloudinary.uploader.destroy(publicId);
+    await Profile.deleteOne({ public_id: publicId });
   });
 
   res.status(200).json({ products });
@@ -121,6 +128,13 @@ const uploadProfileImageToCloud = async (req, res) => {
       folder: "Profile-Upload",
     }
   );
+  // const profiles = await Profile.find().select("public_id");
+  // const profileId = profiles.map((profile) => profile.public_id);
+  // const profileIdResult = profileId.filter((profile) =>
+  //   profile.includes(result.public_id)
+  // );
+
+  // console.log(profileIdResult);
   await Profile.create({
     public_id: result.public_id,
     createdBy: req.user.userId,
