@@ -16,7 +16,6 @@ const Profile = () => {
           Authorization: `Bearer ${localStorage.getItem("Token")}`,
         },
       });
-      console.log(products.data.src);
       user = products.data.user;
       setimageValue(products.data.src);
     } catch (error) {

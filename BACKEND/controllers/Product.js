@@ -19,6 +19,8 @@ const createProduct = async (req, res) => {
       price,
       image,
       public_id,
+      createdBy: req.user.userId,
+      createdByName: req.user.username,
     });
     res.status(200).json({ product });
   } catch (error) {
@@ -30,7 +32,9 @@ const createProduct = async (req, res) => {
 /**----------------------------------GET ALL PRODUCT------------------------------------ */
 
 const getAllProducts = async (req, res) => {
-  const products = await Product.find().select("name price image  public_id");
+  const products = await Product.find({
+    createdBy: String(req.user.userId),
+  }).select("name price image  public_id");
 
   let dbImages = await Image.find().select("public_id");
   let productImageId = await Product.find().select("public_id");

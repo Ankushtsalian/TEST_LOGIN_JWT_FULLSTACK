@@ -39,9 +39,9 @@ button {
     animation: rotate 1.5s infinite alternate linear;
     color: #fff !important;
     border-bottom: 1px solid #000;
-    background-image: url("../Assets/background.svg");
-    /* --tw-bg-opacity: 1;
-    background-color: rgb(30 41 59/var(--tw-bg-opacity)); */
+    /* background-image: url("../Assets/background.svg"); */
+    --tw-bg-opacity: 1;
+    background-color: rgb(30 41 59/var(--tw-bg-opacity));
 
 }
 

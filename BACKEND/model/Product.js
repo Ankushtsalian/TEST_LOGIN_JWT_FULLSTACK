@@ -18,6 +18,16 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: [true, "please provide  public_id"],
     },
+    createdBy: {
+      type: mongoose.Types.ObjectId,
+      ref: "Register",
+      required: [true, "please provide user"],
+    },
+    createdByName: {
+      type: String,
+      ref: "Register",
+      required: [true, "please provide user"],
+    },
   },
   { timestamps: true }
 );
